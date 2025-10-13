@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Upcoming events at Powerhouse Coworking - networking, workshops, and community gatherings">
+    <title>Events | Powerhouse Coworking</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#445C7A',
+                        secondary: '#FF6B00',
+                        dark: '#333333',
+                        light: '#F5F5F5'
+                    },
+                    fontFamily: {
+                        heading: ['Montserrat', 'sans-serif'],
+                        body: ['Open Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .lightning-icon {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23445C7A'%3E%3Cpath d='M13 10h7l-10 14v-8H4l10-14v8z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .countdown-item {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+        }
+        .countdown-number {
+            font-size: 1.75rem;
+            font-weight: bold;
+            color: white;
+        }
+        .countdown-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="font-body text-dark">
+    <!-- Sticky Header -->
+    <header class="fixed w-full bg-white shadow-md z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <span class="lightning-icon"></span>
+                <a href="/" class="text-2xl font-heading font-bold text-primary">Powerhouse</a>
+            </div>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="/#home" class="text-primary hover:text-secondary transition">Home</a>
+                <a href="/#about" class="text-primary hover:text-secondary transition">About</a>
+                <a href="/#memberships" class="text-primary hover:text-secondary transition">Memberships</a>
+                <a href="/#amenities" class="text-primary hover:text-secondary transition">Amenities</a>
+                <a href="/gallery.html" class="text-primary hover:text-secondary transition">Gallery</a>
+                <a href="/events.html" class="text-primary font-bold transition">Events</a>
+                <a href="/blog.html" class="text-primary hover:text-secondary transition">Blog</a>
+                <a href="/#contact" class="text-primary hover:text-secondary transition">Contact</a>
+            </nav>
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="#" class="text-primary hover:text-secondary"><i data-feather="instagram"></i></a>
+                <a href="#" class="text-primary hover:text-secondary"><i data-feather="twitter"></i></a>
+                <a href="#" class="text-primary hover:text-secondary"><i data-feather="linkedin"></i></a>
+                <a href="/#contact" class="bg-secondary text-white px-4 py-2 rounded-full hover:bg-opacity-90 transition">Book a Tour</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-primary">
+                <i data-feather="menu"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white w-full border-t">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+                <a href="/#home" class="text-primary hover:text-secondary transition py-2">Home</a>
+                <a href="/#about" class="text-primary hover:text-secondary transition py-2">About</a>
+                <a href="/#memberships" class="text-primary hover:text-secondary transition py-2">Memberships</a>
+                <a href="/#amenities" class="text-primary hover:text-secondary transition py-2">Amenities</a>
+                <a href="/gallery.html" class="text-primary hover:text-secondary transition py-2">Gallery</a>
+                <a href="/events.html" class="text-primary font-bold transition py-2">Events</a>
+                <a href="/blog.html" class="text-primary hover:text-secondary transition py-2">Blog</a>
+                <a href="/#contact" class="text-primary hover:text-secondary transition py-2">Contact</a>
+                <div class="flex space-x-4 py-2">
+                    <a href="#" class="text-primary hover:text-secondary"><i data-feather="instagram"></i></a>
+                    <a href="#" class="text-primary hover:text-secondary"><i data-feather="twitter"></i></a>
+                    <a href="#" class="text-primary hover:text-secondary"><i data-feather="linkedin"></i></a>
+                </div>
+                <a href="/#contact" class="bg-secondary text-white px-4 py-2 rounded-full hover:bg-opacity-90 transition text-center">Book a Tour</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Events Hero -->
+    <section class="pt-32 pb-20 bg-primary text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-heading font-bold mb-6">Energize Your Network</h1>
+            <p class="text-xl md:text-2xl max-w-3xl mx-auto">Connect with like-minded professionals through our curated events and workshops</p>
+        </div>
+    </section>
+
+    <!-- Next Event Countdown -->
+    <section class="py-12 bg-secondary text-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h2 class="text-2xl font-heading font-bold mb-2">Next Event:</h2>
+                    <h3 class="text-3xl font-bold">Power Networking Night</h3>
+                    <p class="mt-2">June 15, 2025 | 6:00 PM - 9:00 PM</p>
+                </div>
+                <div id="countdown" class="flex space-x-4">
+                    <div class="countdown-item">
+                        <div id="days" class="countdown-number">00</div>
+                        <div class="countdown-label">Days</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div id="hours" class="countdown-number">00</div>
+                        <div class="countdown-label">Hours</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div id="minutes" class="countdown-number">00</div>
+                        <div class="countdown-label">Minutes</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div id="seconds" class="countdown-number">00</div>
+                        <div class="countdown-label">Seconds</div>
+                    </div>
+                </div>
+                <a href="#rsvp" class="mt-6 md:mt-0 bg-white text-secondary px-6 py-3 rounded-full font-bold hover:bg-opacity-90 transition whitespace-nowrap">RSVP Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Content -->
+    <section class="py-16 bg-light">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row gap-12">
+                <!-- Main Content -->
+                <main class="lg:w-2/3">
+                    <!-- Upcoming Events -->
+                    <div class="mb-12">
+                        <h2 class="text-2xl font-heading font-bold text-primary mb-6">Upcoming Events</h2>
+                        <div class="space-y-6">
+                            <!-- Event 1 -->
+                            <div class="event-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                                <div class="md:flex">
+                                    <div class="md:w-1/3">
+                                        <img src="http://static.photos/event/1024x576/20" alt="Networking Night" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="md:w-2/3 p-6">
+                                        <div class="flex justify-between items-start mb-2">
+                                            <span class="inline-block bg-primary bg-opacity-10 text-primary text-sm font-bold px-3 py-1 rounded-full">Networking</span>
+                                            <span class="text-sm text-gray-500">June 15, 2025</span>
+                                        </div>
+                                        <h3 class="text-2xl font-heading font-bold text-primary mb-2">Power Networking Night</h3>
+                                        <p class="text-gray-600 mb-4">Connect with professionals from diverse industries in our signature networking event. Includes lightning talks, speed networking, and cocktails.</p>
+                                        <div class="flex items-center mb-4">
+                                            <i data-feather="map-pin" class="text-secondary w-4 h-4 mr-2"></i>
+                                            <span>Powerhouse Main Lounge</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <div class="flex items-center">
+                                                <i data-feather="clock" class="text-secondary w-4 h-4 mr-2"></i>
+                                                <span>6:00 PM - 9:00 PM</span>
+                                            </div>
+                                            <a href="#rsvp" class="bg-secondary text-white px-4 py-2 rounded-full text-sm font-bold hover:bg-opacity-90 transition">RSVP</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Event 2 -->
+                            <div class="event-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                                <div class="md:flex">
+                                    <div class="md:w-1/3">
+                                        <img src="http://static.photos/workspace/1024x576/21" alt="Workshop" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="md:w-2/3 p-6">
+                                        <div class="flex justify-between items-start mb-2">
+                                            <span class="inline-block bg-primary bg-opacity-10 text-primary text-sm font-bold px-3 py-1 rounded-full">Workshop</span>
+                                            <span class="text-sm text-gray-500">June 22, 2025</span>
+                                        </div>
+                                        <h3 class="text-2xl font-heading font-bold text-primary mb-2">Productivity Masterclass</h3>
+                                        <p class="text-gray-600 mb-4">Learn proven systems and tools to maximize your productivity from time management expert David Chen. Includes workbook and resources.</p>
+                                        <div class="flex items-center mb-4">
+                                            <i data-feather="map-pin" class="text-secondary w-4 h-4 mr-2"></i>
+                                            <span>Powerhouse Conference Room</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <div class="flex items-center">
+                                                <i data-feather="clock" class="text-secondary w-4 h-4 mr-2"></i>
+                                                <span>10:00 AM - 12:30 PM</span>
+                                            </div>
+                                            <a href="#rsvp" class="bg-secondary text-white px-4 py-2 rounded-full text-sm font-bold hover:bg-opacity-90 transition">RSVP</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Event 3 -->
+                            <div class="event-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                                <div class="md:flex">
+                                    <div class="md:w-1/3">
+                                        <img src="http://static.photos/technology/1024x576/22" alt="Panel Discussion" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="md:w-2/3 p-6">
+                                        <div class="flex justify-between items-start mb-2">
+                                            <span class="inline-block bg-primary bg-opacity-10 text-primary text-sm font-bold px-3 py-1 rounded-full">Panel</span>
+                                            <span class="text-sm text-gray-500">July 5, 2025</span>
+                                        </div>
+                                        <h3 class="text-2xl font-heading font-bold text-primary mb-2">Future of Remote Work Panel</h3>
+                                        <p class="text-gray-600 mb-4">Join industry leaders as they discuss emerging trends, challenges, and opportunities in the evolving world of remote and hybrid work.</p>
+                                        <div class="flex items-center mb-4">
+                                            <i data-feather="map-pin" class="text-secondary w-4 h-4 mr-2"></i>
+                                            <span>Powerhouse Auditorium</span>
+                                        </div>
+                                        <div class="flex justify-between items-center">
+                                            <div class="flex items-center">
+                                                <i data-feather="clock" class="text-secondary w-4 h-4 mr-2"></i>
+                                                <span>5:30 PM - 7:30 PM</span>
+                                            </div>
+                                            <a href="#rsvp" class="bg-secondary text-white px-4 py-2 rounded-full text-sm font-bold hover:bg-opacity-90 transition">RSVP</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Past Events -->
+                    <div>
+                        <h2 class="text-2xl font-heading font-bold text-primary mb-6">Past Events</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Past Event 1 -->
+                            <div class="event-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                                <img src="http://static.photos/workspace/1024x576/23" alt="Past Event" class="w-full h-48 object-cover">
+                                <div class="p-6">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="inline-block bg-primary bg-opacity-10 text-primary text-sm font-bold px-3 py-1 rounded-full">Workshop</span>
+                                        <span class="text-sm text-gray-500">May 18, 2025</span>
+                                    </div>
+                                    <h3 class="text-xl font-heading font-bold text-primary mb-2">Freelancer Financial Planning</h3>
+                                    <p class="text-gray-600 mb-4">Expert advice on managing finances as an independent professional.</p>
+                                    <a href="#" class="text-secondary font-bold hover:underline">View Photos →</a>
+                                </div>
+                            </div>
+
+                            <!-- Past Event 2 -->
+                            <div class="event-card bg-white rounded-xl shadow-md overflow-hidden transition duration-300">
+                                <img src="http://static.photos/event/1024x576/24" alt="Past Event" class="w-full h-48 object-cover">
+                                <div class="p-6">
+                                    <div class="flex justify-between items-center mb-2">
+                                        <span class="inline-block bg-primary bg-opacity-10 text-primary text-sm font-bold px-3 py-1 rounded-full">Social</span>
+                                        <span class="text-sm text-gray-500">April 30, 2025</span>
+                                    </div>
+                                    <h3 class="text-xl font-heading font-bold text-primary mb-2">Spring Mixer & Member Showcase</h3>
+                                    <p class="text-gray-600 mb-4">Celebrating our community with food, drinks, and member spotlights.</p>
+                                    <a href="#" class="text-secondary font-bold hover:underline">View Photos →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+
+                <!-- Sidebar -->
+                <aside class="lg:w-1/3">
+                    <!-- RSVP Form -->
+                    <div id="rsvp" class="bg-white rounded-xl shadow-md p-6 mb-8 sticky top-8">
+                        <h3 class="text-xl font-heading font-bold text-primary mb-4">RSVP for Events</h3>
+                        <form class="space-y-4">
+                            <div>
+                                <label for="event" class="block text-dark mb-2">Event</label>
+                                <select id="event" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                    <option value="">Select an event</option>
+                                    <option value="networking">Power Networking Night - June 15</option>
+                                    <option value="productivity">Productivity Masterclass - June 22</option>
+                                    <option value="remote-work">Future of Remote Work Panel - July 5</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="name" class="block text-dark mb-2">Full Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-dark mb-2">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="guests" class="block text-dark mb-2">Number of Guests</label>
+                                <input type="number" id="guests" min="0" max="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-dark mb-2">Special Requests</label>
+                                <textarea id="message" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-primary text-white py-3 rounded-lg hover:bg-opacity-90 transition font-bold">Submit RSVP</button>
+                        </form>
+                    </div>
+
+                    <!-- Event Calendar -->
+                    <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+                        <h3 class="text-xl font-heading font-bold text-primary mb-4">Event Calendar</h3>
+                        <div class="bg-light rounded-lg p-4">
+                            <div class="flex justify-between items-center mb-4">
+                                <h4 class="font-bold">June 2025</h4>
+                                <div class="flex space-x-2">
+                                    <button class="p-1 text-primary hover:text-secondary">
+                                        <i data-feather="chevron-left" class="w-4 h-4"></i>
+                                    </button>
+                                    <button class="p-1 text-primary hover:text-secondary">
+                                        <i data-feather="chevron-right" class="w-4 h-4"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-7 gap-1 text-center text-xs font-bold mb-2">
+                                <div>S</div>
+                                <div>M</div>
+                                <div>T</div>
+                                <div>W</div>
+                                <div>T</div>
+                                <div>F</div>
+                                <div>S</div>
+                            </div>
+                            <div class="grid grid-cols-7 gap-1 text-center">
+                                <div class="py-1 text-gray-400">25</div>
+                                <div class="py-1 text-gray-400">26</div>
+                                <div class="py-1 text-gray-400">27</div>
+                                <div class="py-1 text-gray-400">28</div>
+                                <div class="py-1 text-gray-400">29</div>
+                                <div class="py-1 text-gray-400">30</div>
+                                <div class="py-1">1</div>
+                                <div class="py-1">2</div>
+                                <div class="py-1">3</div>
+                                <div class="py-1">4</div>
+                                <div class="py-1">5</div>
+                                <div class="py-1">6</div>
+                                <div class="py-1">7</div>
+                                <div class="py-1">8</div>
+                                <div class="py-1">9</div>
+                                <div class="py-1">10</div>
+                                <div class="py-1">11</div>
+                                <div class="py-1">12</div>
+                                <div class="py-1">13</div>
+                                <div class="py-1">14</div>
+                                <div class="py-1 bg-secondary text-white rounded-full">15</div>
+                                <div class="py-1">16</div>
+                                <div class="py-1">17</div>
+                                <div class="py-1">18</div>
+                                <div class="py-1">19</div>
+                                <div class="py-1">20</div>
+                                <div class="py-1">21</div>
+                                <div class="py-1 bg-primary bg-opacity-10 text-primary rounded-full">22</div>
+                                <div class="py-1">23</div>
+                                <div class="py-1">24</div>
+                                <div class="py-1">25</div>
+                                <div class="py-1">26</div>
+                                <div class="py-1">27</div>
+                                <div class="py-1">28</div>
+                                <div class="py-1">29</div>
+                                <div class="py-1">30</div>
+                                <div class="py-1 text-gray-400">1</div>
+                                <div class="py-1 text-gray-400">2</div>
+                                <div class="py-1 text-gray-400">3</div>
+                                <div class="py-1 text-gray-400">4</div>
+                                <div class="py-1 text-gray-400">5</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Event Categories -->
+                    <div class="bg-white rounded-xl shadow-md p-6">
+                        <h3 class="text-xl font-heading font-bold text-primary mb-4">Event Types</h3>
+                        <ul class="space-y-2">
+                            <li>
+                                <a href="#" class="flex items-center py-2 hover:text-secondary transition">
+                                    <i data-feather="users" class="w-4 h-4 mr-3 text-primary"></i>
+                                    <span>Networking</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center py-2 hover:text-secondary transition">
+                                    <i data-feather="book" class="w-4 h-4 mr-3 text-primary"></i>
+                                    <span>Workshops</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center py-2 hover:text-secondary transition">
+                                    <i data-feather="mic" class="w-4 h-4 mr-3 text-primary"></i>
+                                    <span>Speaker Series</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center py-2 hover:text-secondary transition">
+                                    <i data-feather="smile" class="w-4 h-4 mr-3 text-primary"></i>
+                                    <span>Social Mixers</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center py-2 hover:text-secondary transition">
+                                    <i data-feather="briefcase" class="w-4 h-4 mr-3 text-primary"></i>
+                                    <span>Professional Development</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <span class="lightning-icon"></span>
+                        <span class="text-2xl font-heading font-bold">Powerhouse</span>
+                    </div>
+                    <p class="mb-4">Empowering innovators with flexible workspaces and a thriving community.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="hover:text-secondary transition"><i data-feather="instagram"></i></a>
+                        <a href="#" class="hover:text-secondary transition"><i data-feather="twitter"></i></a>
+                        <a href="#" class="hover:text-secondary transition"><i data-feather="linkedin"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-heading font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/#home" class="hover:text-secondary transition">Home</a></li>
+                        <li><a href="/#about" class="hover:text-secondary transition">About</a></li>
+                        <li><a href="/#memberships" class="hover:text-secondary transition">Memberships</a></li>
+                        <li><a href="/#amenities" class="hover:text-secondary transition">Amenities</a></li>
+                        <li><a href="/#contact" class="hover:text-secondary transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-heading font-bold mb-4">Explore</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/blog.html" class="hover:text-secondary transition">Blog</a></li>
+                        <li><a href="/events.html" class="hover:text-secondary transition">Events</a></li>
+                        <li><a href="/gallery.html" class="hover:text-secondary transition">Gallery</a></li>
+                        <li><a href="#" class="hover:text-secondary transition">Careers</a></li>
+                        <li><a href="#" class="hover:text-secondary transition">Partnerships</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-heading font-bold mb-4">Legal</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-secondary transition">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-secondary transition">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-secondary transition">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-center">
+                <p>© 2025 Powerhouse Coworking. All rights reserved.</p>
+            </div>
+        </div>
+        <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary text-white p-3 rounded-full shadow-lg hover:bg-opacity-90 transition opacity-0 invisible">
+            <i data-feather="arrow-up" class="w-5 h-5"></i>
+        </button>
+    </footer>
+
+    <script>
+        // Countdown timer for next event
+        function updateCountdown() {
+            const now = new Date();
+            const eventDate = new Date('June 15, 2025 18:00:00');
+            const diff = eventDate - now;
+            
+            if (diff <= 0) {
+                document.getElementById('countdown').innerHTML = '<div class="text-xl font-bold">Event is happening now!</div>';
+                return;
+            }
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            const icon = mobileMenuButton.querySelector('svg');
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+                icon.setAttribute('data-feather', 'x');
+                feather.replace();
+            } else {
+                mobileMenu.classList.add('hidden');
+                icon.setAttribute('data-feather', 'menu');
+                feather.replace();
+            }
+        });
+
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Initialize feather icons
+        feather.replace();
+        
+        // Add fade-in animation to sections as they come into view
+        const sections = document.querySelectorAll('section');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Powerhouse coworking space - flexible workspaces that fuel innovation and productivity in your city">
+    <meta name="keywords" content="Powerhouse coworking, shared office space, coworking space [city], flexible workspace">
+    <title>Powerhouse Coworking - Unleash Your Potential</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#445C7B',      // Steel Blue
+                        'primary-light': '#7EA9E0', // Light Blue
+                        gray: '#A09F98',         // Gray
+                        dark: '#000000',         // Black
+                        light: '#FFFFFF'         // White
+                    },
+                    fontFamily: {
+                        heading: ['Montserrat', 'sans-serif'],
+                        body: ['Open Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navbar styles */
+        header {
+            position: absolute;
+            top: 100%; /* Places navbar directly below hero section */
+            width: 100%;
+            z-index: 50;
+            /* transition: position 0.3s ease, top 0.3s ease; */
+        }
+        header.sticky {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 50;
+        }
+
+        /* Scroll Arrow Styles */
+        .scroll-arrow {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            color: #445C7B;
+            opacity: 0; /* Start invisible */
+            animation: fadeIn 0.5s ease-in 3s forwards, bob 1.5s ease-in-out 3.5s infinite;
+            cursor: pointer;
+        }
+
+        .scroll-arrow:hover {
+            opacity: 1;
+        }
+
+        @keyframes bob {
+            0%, 100% { transform: translate(-50%, 0); }
+            50% { transform: translate(-50%, 10px); }
+        }
+
+        .vanta-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        .content-overlay {
+            position: relative;
+            z-index: 1;
+        }
+        .lightning-icon {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23445C7B'%3E%3Cpath d='M13 10h7l-10 14v-8H4l10-14v8z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        .membership-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .amenity-icon {
+            transition: all 0.3s ease;
+        }
+        .amenity-item:hover .amenity-icon {
+            transform: scale(1.1);
+            color: #445C7B;
+        }
+        .testimonial-slide {
+            min-width: 100%;
+            transition: all 0.5s ease;
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .gradient-vertical {
+            background: linear-gradient(to bottom, #445C7B 0%, #7EA9E0 100%);
+        }
+        .section-gradient {
+            background: linear-gradient(to bottom, #445C7B 0%, #7EA9E0 100%);
+        }
+        .section-white {
+            background-color: #FFFFFF;
+        }
+        .logo-svg path {
+            fill: #FFFFFF;
+        }
+
+        .logo-svg-navbar path {
+            fill: #445C7B;
+        }
+        .taglines p {
+            color: #FFFFFFCC;
+        }
+        .btn-primary {
+            background-color: #445C7B;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(to bottom, #445C7B 0%, #7EA9E0 100%);
+        }
+
+        /* Animation styles */
+        .logo-container {
+            width: 100%;
+            max-width: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: transparent;
+            position: relative;
+            height: 100%;
+        }
+
+        .logo-svg {
+            overflow: visible;
+        }
+
+        #power, #house {
+            will-change: transform;
+        }
+
+        .taglines {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            display: none;
+            width: 100%;
+            max-width: 400px;
+            height: 2.5em;
+            overflow: hidden;
+        }
+
+        .taglines p {
+            font-size: clamp(1rem, 1.5rem, 2rem);
+            letter-spacing: 1px;
+            margin: 0;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            color: #FFFFFF;
+            font-weight: 600;
+        }
+
+        .taglines p.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+
+        .navbar-logo {
+            width: 200px; /* Adjust size for navbar */
+            height: auto;
+        }
+
+        @media (min-width: 769px) {
+            .horizontal-svg {
+                display: contents;
+            }
+
+            .vertical-svg {
+                display: none;
+            }
+
+            .logo-svg {
+                width: 30%;
+                height: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                height: auto;
+                overflow-y: auto;
+            }
+
+            .hero {
+                height: auto;
+                min-height: 50vh;
+            }
+
+            .horizontal-svg {
+                display: none;
+            }
+
+            .vertical-svg {
+                display: contents;
+            }
+
+            .logo-svg {
+                width: 100%;
+                height: auto;
+                max-height: 70vh;
+            }
+
+            .taglines p {
+                font-size: clamp(0.8rem, 1.5rem, 1.8rem);
+            }
+
+            .navbar-logo {
+                width: 150px; /* Slightly smaller for mobile */
+            }
+    </style>
+</head>
+<body class="font-body text-dark">
+    <!-- Sticky Header -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="#home">
+                    <svg class="navbar-logo logo-svg-navbar" viewBox="0 0 1307.592 212.18237" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+                        <defs>
+                            <clipPath id="clipPath2">
+                                <path transform="translate(-35.223001,-81.166205)" d="M 0,160 H 981 V 0 H 0 Z"/>
+                            </clipPath>
+                            <clipPath id="clipPath4">
+                                <path transform="translate(-503.30501,-3.1810001)" d="M 0,160 H 981 V 0 H 0 Z"/>
+                            </clipPath>
+                        </defs>
+                        <g id="power" transform="matrix(1.3333333,0,0,-1.3333333,46.964,105.11173)">
+                            <path d="M 0,0 H -4.924 V 52.228 H 0 c 16.748,0 21.681,-7.386 21.681,-26.357 C 21.681,6.9 16.757,0.009 0,0.009 m -4.924,-78.346 v 53.707 h 7.882 c 33.753,0 48.287,18.227 48.287,50.749 0,32.522 -14.534,50.749 -48.287,50.749 H -35.223 V -78.328 H -4.924 Z M 147.81,-11.079 V 9.61 c 0,44.345 -12.559,69.224 -46.064,69.224 -33.505,0 -46.312,-25.127 -46.312,-69.224 v -20.689 c 0,-44.098 12.807,-69.224 46.312,-69.224 33.505,0 46.064,24.878 46.064,69.224 M 87.212,-25.613 v 49.757 c 0,17.988 2.711,29.811 14.534,29.811 11.824,0 14.534,-11.823 14.534,-29.811 v -49.757 c 0,-17.988 -2.71,-29.812 -14.534,-29.812 -11.823,0 -14.534,11.824 -14.534,29.812 M 255.28,76.868 242.243,-12.807 h -0.964 L 228.003,76.868 H 205.55 l -13.036,-89.675 h -0.965 L 178.274,76.868 H 149.785 L 175.38,-78.328 h 28.002 L 215.693,8.14 h 0.964 l 12.55,-86.468 h 28.002 L 282.804,76.868 Z M 359.708,-78.337 v 25.126 h -42.866 v 41.635 h 31.778 v 25.127 h -31.778 v 38.181 h 42.37 V 76.868 H 287.03 V -78.328 h 72.669 z m 65.77,0 h 30.299 c -3.941,7.882 -3.445,16.261 -4.676,35.967 -0.983,18.971 -5.669,31.281 -22.168,34.984 15.764,2.71 26.357,14.534 26.357,38.925 0,27.589 -14.286,45.329 -47.791,45.329 h -39.66 V -78.328 h 30.051 v 59.127 h 6.403 c 13.551,0 16.509,-8.378 17.492,-24.391 0.983,-19.458 1.479,-28.085 3.693,-34.736 M 403.31,4.934 h -5.42 v 47.294 h 5.42 c 16.509,0 21.929,-8.13 21.929,-23.647 0,-17.492 -5.42,-23.647 -21.929,-23.647" fill="#445C7B"/>
+                        </g>
+                        <g id="house" transform="matrix(1.3333333,0,0,-1.3333333,671.07333,209.092)">
+                            <path d="M 0,0 H 30.697 V 65.767 H 61.929 V 0 H 92.627 V 152.882 H 61.929 V 90.519 H 30.697 v 62.363 H 0 Z m 195.748,66.246 v 20.381 c 0,43.685 -12.625,68.192 -46.291,68.192 -33.667,0 -46.536,-24.752 -46.536,-68.192 V 66.246 c 0,-43.44 12.869,-68.192 46.536,-68.192 33.666,0 46.291,24.508 46.291,68.192 M 134.859,51.929 v 49.024 c 0,17.711 2.724,29.367 14.607,29.367 11.882,0 14.606,-11.647 14.606,-29.367 V 51.929 c 0,-17.711 -2.724,-29.358 -14.606,-29.358 -11.883,0 -14.607,11.647 -14.607,29.358 m 117.392,-54.11 c 34.906,0 45.794,21.593 45.794,52.662 v 102.41 H 266.614 V 48.544 c 0,-16.742 -2.724,-25.964 -14.353,-25.964 -11.63,0 -14.109,9.222 -14.109,25.964 v 104.347 h -31.44 V 50.481 c 0,-31.06 10.643,-52.662 45.549,-52.662 m 82.092,54.843 h -27.231 v -8.733 c 0,-30.824 16.589,-45.866 43.069,-45.866 26.48,0 42.571,15.286 42.571,42.707 0,23.54 -12.371,34.219 -30.2,44.653 l -14.109,8.734 c -7.918,4.851 -12.624,9.71 -12.624,20.145 0,10.435 4.208,16.498 12.869,16.498 9.656,0 14.353,-7.041 14.353,-21.113 v -8.978 h 26.978 v 8.733 c 0,29.367 -14.353,45.377 -41.34,45.377 -24.996,0 -41.087,-16.987 -41.087,-42.472 0,-25.485 13.366,-36.155 28.462,-45.141 l 12.869,-8.01 c 9.656,-6.063 15.349,-9.946 15.349,-20.869 0,-10.923 -4.453,-16.263 -14.109,-16.263 -10.643,0 -15.838,8.009 -15.838,21.358 v 9.222 z M 477.389,0 v 24.752 h -43.711 v 41.015 h 32.571 v 24.752 h -32.571 v 37.612 h 43.214 v 24.751 h -73.17 V 0 h 73.658 z" fill="#445C7B"/>
+                        </g>
+                    </svg>
+                </a>
+            </div>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="text-primary hover:text-primary-light transition">Home</a>
+                <a href="#intro" class="text-primary hover:text-primary-light transition">Intro</a>
+                <a href="#about" class="text-primary hover:text-primary-light transition">About</a>
+                <a href="#memberships" class="text-primary hover:text-primary-light transition">Memberships</a>
+                <a href="#amenities" class="text-primary hover:text-primary-light transition">Amenities</a>
+                <a href="/gallery.html" class="text-primary hover:text-primary-light transition">Gallery</a>
+                <a href="/events.html" class="text-primary hover:text-primary-light transition">Events</a>
+                <a href="/blog.html" class="text-primary hover:text-primary-light transition">Blog</a>
+                <a href="#contact" class="text-primary hover:text-primary-light transition">Contact</a>
+            </nav>
+            <div class="hidden md:flex items-center">
+                <a href="#contact" class="btn-primary text-white px-4 py-2 rounded-full hover:bg-opacity-90 transition">Book a Tour</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-primary">
+                <i data-feather="menu"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white w-full border-t">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+                <a href="#home" class="text-primary hover:text-primary-light transition py-2">Home</a>
+                <a href="#intro" class="text-primary hover:text-primary-light transition py-2">Intro</a>
+                <a href="#about" class="text-primary hover:text-primary-light transition py-2">About</a>
+                <a href="#memberships" class="text-primary hover:text-primary-light transition py-2">Memberships</a>
+                <a href="#amenities" class="text-primary hover:text-primary-light transition py-2">Amenities</a>
+                <a href="/gallery.html" class="text-primary hover:text-primary-light transition py-2">Gallery</a>
+                <a href="/events.html" class="text-primary hover:text-primary-light transition py-2">Events</a>
+                <a href="/blog.html" class="text-primary hover:text-primary-light transition py-2">Blog</a>
+                <a href="#contact" class="text-primary hover:text-primary-light transition py-2">Contact</a>
+                <div class="flex space-x-4 py-2">
+                    <a href="#" class="text-primary hover:text-primary-light"><i data-feather="instagram"></i></a>
+                    <a href="#" class="text-primary hover:text-primary-light"><i data-feather="twitter"></i></a>
+                    <a href="#" class="text-primary hover:text-primary-light"><i data-feather="linkedin"></i></a>
+                </div>
+                <a href="#contact" class="btn-primary text-white px-4 py-2 rounded-full hover:bg-opacity-90 transition text-center">Book a Tour</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center overflow-hidden gradient-vertical">
+        <div id="vanta-bg" class="vanta-bg"></div>
+        <div class="content-overlay container mx-auto px-4 w-full text-white">
+            <div class="hero-content">
+                <div class="logo-container">
+                    <!-- Horizontal Animation SVGs -->
+                    <div class="horizontal-svg">
+                        <svg class="logo-svg power-svg" viewBox="0 0 718.67 802.67" overflow="visible" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <clipPath id="clipPath2">
+                                    <path transform="translate(-39.59 -441.19)" d="m0 527h539v-527h-539z"/>
+                                </clipPath>
+                            </defs>
+                            <g id="power" transform="matrix(1.3333 0 0 -1.3333 52.787 400.285)">
+                                <path d="m0 0h-5.36v56.85h5.36c18.23 0 23.6-8.04 23.6-28.69s-5.36-28.15-23.6-28.15m-5.36-85.28v58.46h8.58c36.74 0 52.56 19.84 52.56 55.24s-15.82 55.24-52.56 55.24h-41.56v-168.93h32.98zm166.25 73.21v22.52c0 48.27-13.67 75.35-50.14 75.35s-50.41-27.35-50.41-75.35v-22.52c0-48 13.94-75.35 50.41-75.35s50.14 27.08 50.14 75.35m-65.96-15.82v54.16c0 19.58 2.95 32.45 15.82 32.45s15.82-12.87 15.82-32.45v-54.16c0-19.58-2.95-32.45-15.82-32.45s-15.82 12.87-15.82 32.45m182.94 111.55-14.19-97.61h-1.05l-14.45 97.61h-24.44l-14.19-97.61h-1.05l-14.45 97.61h-31.01l27.86-168.93h30.48l13.40 94.12h1.05l13.66-94.12h30.48l27.86 168.93zm113.67-168.94v27.35h-46.66v45.32h34.59v27.35h-34.59v41.56h46.12v27.36h-78.57v-168.93h79.1zm71.59 0h32.98c-4.29 8.58-3.75 17.7-5.09 39.15-1.07 20.65-6.17 34.05-24.13 38.08 17.16 2.95 28.69 15.82 28.69 42.37 0 30.03-15.55 49.34-52.02 49.34h-43.17v-168.93h32.71v64.36h6.97c14.75 0 17.97-9.12 19.04-26.55 1.07-21.18 1.61-30.57 4.02-37.81m-24.13 90.63h-5.9v51.48h5.9c17.97 0 23.87-8.85 23.87-25.74 0-19.04-5.9-25.74-23.87-25.74" clip-path="url(#clipPath2)" fill="#FFFFFF"/>
+                            </g>
+                        </svg>
+                        <svg class="logo-svg house-svg" viewBox="0 0 718.67 802.67" overflow="visible" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <clipPath id="clipPath4">
+                                    <path transform="translate(0 -152.93)" d="m0 527h539v-527h-539z"/>
+                                </clipPath>
+                            </defs>
+                            <g id="house" transform="matrix(1.3333 0 0 -1.3333 0 514.1425)">
+                                <path d="m0 0h33.92v72.67h34.51v-72.67h33.92v168.93h-33.92v-68.91h-34.51v68.91h-33.92zm219.61 73.2v22.52c0 48.27-13.95 75.35-51.15 75.35s-51.42-27.35-51.42-75.35v-22.52c0-48 14.22-75.35 51.42-75.35s51.15 27.08 51.15 75.35m-67.28-15.82v54.17c0 19.57 3.01 32.45 16.14 32.45s16.14-12.87 16.14-32.45v-54.17c0-19.57-3.01-32.44-16.14-32.44s-16.14 12.87-16.14 32.44m133.03-59.79c38.57 0 50.6 23.86 50.6 58.19v113.16h-34.73v-115.3c0-18.5-3.01-28.69-15.86-28.69s-15.59 10.19-15.59 28.69v115.3h-34.74v-113.16c0-34.32 11.76-58.19 50.33-58.19m92.92 60.6h-30.09v-9.65c0-34.06 18.33-50.68 47.59-50.68s47.04 16.89 47.04 47.19c0 26.01-13.67 37.81-33.37 49.34l-15.59 9.65c-8.75 5.36-13.95 10.73-13.95 22.26s4.65 18.23 14.22 18.23c10.67 0 15.86-7.78 15.86-23.33v-9.92h29.81v9.65c0 32.45-15.86 50.14-45.68 50.14-27.62 0-45.4-18.77-45.4-46.93s14.77-39.95 31.45-49.88l14.22-8.85c10.67-6.7 16.96-10.99 16.96-23.06s-4.92-17.97-15.59-17.97c-11.76 0-17.5 8.85-17.5 23.6v10.19zm160.26-58.19v27.35h-48.3v45.32h35.99v27.35h-35.99v41.56h47.75v27.35h-80.85v-168.93h81.39z" clip-path="url(#clipPath4)" fill="#FFFFFF"/>
+                            </g>
+                        </svg>
+                        <div class="taglines">
+                            <p>A New Shared Space</p>
+                            <p>Space to Do Good Work</p>
+                            <p>Where Work Happens</p>
+                        </div>
+                    </div>
+                    <!-- Vertical Animation SVG -->
+                    <div class="vertical-svg">
+                        <svg class="logo-svg" viewBox="0 0 718.67 802.67" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" overflow="visible">
+                            <defs>
+                                <clipPath id="clipPath2">
+                                    <path transform="translate(-39.59 -441.19)" d="m0 527h539v-527h-539z"/>
+                                </clipPath>
+                                <clipPath id="clipPath4">
+                                    <path transform="translate(0 -152.93)" d="m0 527h539v-527h-539z"/>
+                                </clipPath>
+                            </defs>
+                            <g id="house">
+                                <path transform="matrix(1.3333 0 0 -1.3333 0 648.76)" d="m0 0h33.92v72.67h34.51v-72.67h33.92v168.93h-33.92v-68.91h-34.51v68.91h-33.92zm219.61 73.2v22.52c0 48.27-13.95 75.35-51.15 75.35s-51.42-27.35-51.42-75.35v-22.52c0-48 14.22-75.35 51.42-75.35s51.15 27.08 51.15 75.35m-67.28-15.82v54.17c0 19.57 3.01 32.45 16.14 32.45s16.14-12.87 16.14-32.45v-54.17c0-19.57-3.01-32.44-16.14-32.44s-16.14 12.87-16.14 32.44m133.03-59.79c38.57 0 50.6 23.86 50.6 58.19v113.16h-34.73v-115.3c0-18.5-3.01-28.69-15.86-28.69s-15.59 10.19-15.59 28.69v115.3h-34.74v-113.16c0-34.32 11.76-58.19 50.33-58.19m92.92 60.6h-30.09v-9.65c0-34.06 18.33-50.68 47.59-50.68s47.04 16.89 47.04 47.19c0 26.01-13.67 37.81-33.37 49.34l-15.59 9.65c-8.75 5.36-13.95 10.73-13.95 22.26s4.65 18.23 14.22 18.23c10.67 0 15.86-7.78 15.86-23.33v-9.92h29.81v9.65c0 32.45-15.86 50.14-45.68 50.14-27.62 0-45.4-18.77-45.4-46.93s14.77-39.95 31.45-49.88l14.22-8.85c10.67-6.7 16.96-10.99 16.96-23.06s-4.92-17.97-15.59-17.97c-11.76 0-17.5 8.85-17.5 23.6v10.19zm160.26-58.19v27.35h-48.3v45.32h35.99v27.35h-35.99v41.56h47.75v27.35h-80.85v-168.93h81.39z" clip-path="url(#clipPath4)" fill="#FFFFFF"/>
+                            </g>
+                            <g id="power">
+                                <path transform="matrix(1.3333 0 0 -1.3333 52.787 264.41)" d="m0 0h-5.36v56.85h5.36c18.23 0 23.6-8.04 23.6-28.69s-5.36-28.15-23.60-28.15m-5.36-85.28v58.46h8.58c36.74 0 52.56 19.84 52.56 55.24s-15.82 55.24-52.56 55.24h-41.56v-168.93h32.98zm166.25 73.21v22.52c0 48.27-13.67 75.35-50.14 75.35s-50.41-27.35-50.41-75.35v-22.52c0-48 13.94-75.35 50.41-75.35s50.14 27.08 50.14 75.35m-65.96-15.82v54.16c0 19.58 2.95 32.45 15.82 32.45s15.82-12.87 15.82-32.45v-54.16c0-19.58-2.95-32.45-15.82-32.45s-15.82 12.87-15.82 32.45m182.94 111.55-14.19-97.61h-1.05l-14.45 97.61h-24.44l-14.19-97.61h-1.05l-14.45 97.61h-31.01l27.86-168.93h30.48l13.40 94.12h1.05l13.66-94.12h30.48l27.86 168.93zm113.67-168.94v27.35h-46.66v45.32h34.59v27.35h-34.59v41.56h46.12v27.36h-78.57v-168.93h79.1zm71.59 0h32.98c-4.29 8.58-3.75 17.7-5.09 39.15-1.07 20.65-6.17 34.05-24.13 38.08 17.16 2.95 28.69 15.82 28.69 42.37 0 30.03-15.55 49.34-52.02 49.34h-43.17v-168.93h32.71v64.36h6.97c14.75 0 17.97-9.12 19.04-26.55 1.07-21.18 1.61-30.57 4.02-37.81m-24.13 90.63h-5.9v51.48h5.9c17.97 0 23.87-8.85 23.87-25.74 0-19.04-5.9-25.74-23.87-25.74" clip-path="url(#clipPath2)" fill="#FFFFFF"/>
+                            </g>
+                        </svg>
+                        <div class="taglines">
+                            <p>A New Shared Space</p>
+                            <p>Space to Do Good Work</p>
+                            <p>Where Work Happens</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="#intro" class="scroll-arrow" aria-label="Scroll down to explore">
+            <i data-feather="chevron-down" class="w-8 h-8"></i>
+        </a>
+    </section>
+
+    <!-- Intro Section -->
+    <section id="intro" class="py-20 section-gradient text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-6xl font-heading font-bold text-white mb-4">Unleash Your Potential at <span class="text-white">Powerhouse</span></h1>
+                <p class="text-xl md:text-2xl text-white mb-8">Empowering innovators with flexible workspaces and a thriving community.</p>
+                <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 justify-center">
+                    <a href="#contact" class="btn-primary text-white px-6 py-3 rounded-full hover:bg-opacity-90 transition text-lg font-bold">Book a Free Tour</a>
+                    <a href="#memberships" class="btn-primary text-white px-6 py-3 rounded-full hover:bg-opacity-90 transition text-lg font-bold">Explore Memberships</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 section-white text-black">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-heading font-bold text-primary text-center mb-12">What Makes Powerhouse Different</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <h3 class="text-2xl font-heading font-bold text-primary mb-4">Our Story</h3>
+                    <p class="text-lg mb-6">Founded in 2020, Powerhouse was born from the need for flexible, inspiring workspaces that foster collaboration and innovation. We've grown from a single location to a network of vibrant coworking hubs across the city.</p>
+                    
+                    <h3 class="text-2xl font-heading font-bold text-primary mb-4">Our Mission</h3>
+                    <p class="text-lg mb-6">To empower entrepreneurs, freelancers, and remote workers with more than just a desk - we provide the tools, community, and environment to help your business thrive.</p>
+                    
+                    <h3 class="text-2xl font-heading font-bold text-primary mb-4">Our Values</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <span class="lightning-icon"></span>
+                            <span class="text-lg">Collaboration over competition</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="lightning-icon"></span>
+                            <span class="text-lg">Flexibility to grow at your pace</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="lightning-icon"></span>
+                            <span class="text-lg">Community that supports and inspires</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="bg-white p-4 rounded-lg shadow-xl">
+                        <img src="http://static.photos/workspace/1024x576/1" alt="Powerhouse coworking space" class="w-full h-auto rounded-lg">
+                        <div class="mt-4 p-4 bg-primary text-white rounded-lg">
+                            <h4 class="font-heading font-bold text-xl mb-2">By the Numbers</h4>
+                            <div class="grid grid-cols-3 gap-4 text-center">
+                                <div>
+                                    <div class="text-3xl font-bold">500+</div>
+                                    <div class="text-sm">Members</div>
+                                </div>
+                                <div>
+                                    <div class="text-3xl font-bold">24/7</div>
+                                    <div class="text-sm">Access</div>
+                                </div>
+                                <div>
+                                    <div class="text-3xl font-bold">100+</div>
+                                    <div class="text-sm">Events</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Memberships Section -->
+    <section id="memberships" class="py-20 section-gradient text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-heading font-bold text-white text-center mb-4">Power Up Your Workspace</h2>
+            <p class="text-xl text-center mb-12 max-w-3xl mx-auto">Choose the membership that fits your needs and budget. All plans include access to our vibrant community and networking events.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <!-- Hot Desk Card -->
+                <div class="membership-card bg-white bg-opacity-10 rounded-xl p-6 shadow-lg transition duration-300">
+                    <div class="text-center mb-6">
+                        <div class="bg-white bg-opacity-20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-feather="users" class="text-white w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold text-white">Hot Desk</h3>
+                        <div class="text-3xl font-bold my-3 text-white">$99<span class="text-lg font-normal text-white">/mo</span></div>
+                        <div class="text-sm text-primary font-bold">Flexible Workspace</div>
+                    </div>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-primary w-4 h-4 mr-2 mt-1"></i>
+                            <span class="text-white">Access to shared workspace</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-primary w-4 h-4 mr-2 mt-1"></i>
+                            <span class="text-white">High-speed WiFi</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-primary w-4 h-4 mr-2 mt-1"></i>
+                            <span class="text-white">Free coffee & tea</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-primary w-4 h-4 mr-2 mt-1"></i>
+                            <span class="text-white">Community events</span>
+                        </li>
+                    </ul>
+                    <button class="w-full btn-primary text-white py-3 rounded-lg hover:bg-opacity-90 transition">Sign Up</button>
+                </div>
+                
+                <!-- Dedicated Desk Card -->
+                <div class="membership-card bg-white bg-opacity-10 rounded-xl p-6 shadow-lg transition duration-300">
+                    <div class="text-center mb-6">
+                        <div class="bg-white bg-opacity-20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-feather="home" class="text-white w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold text-white">Dedicated Desk</h3>
+                        <div class="text-3xl font-bold my-3 text-white">$199<span class="text-lg font-normal text-white">/mo</span></div>
+                        <div class="text-sm text-primary font-bold">Your Own Space</div>
+                    </div>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-primary w-4 h-4 mr-2 mt-1"></i>
+                            <span class="text-white">Personal dedicated desk</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-primary w-4 h-4 mr-2 mt-1"></i>
+                            <span class="text-white">Lockable storage</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-primary w-4 h-4 mr-2 mt-1"></i>
+                            <span class="text-white">All Hot Desk benefits</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-primary w-4 h-4 mr-2 mt-1"></i>
+                            <span class="text-white">Free printing (100 pages)</span>
+                        </li>
+                    </ul>
+                    <button class="w-full btn-primary text-white py-3 rounded-lg hover:bg-opacity-90 transition">Sign Up</button>
+                </div>
+                
+                <!-- Private Office Card -->
+                <div class="membership-card bg-white bg-opacity-10 rounded-xl p-6 shadow-lg transition duration-300">
+                    <div class="text-center mb-6">
+                        <div class="bg-white bg-opacity-20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-feather="briefcase" class="text-white w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold text-white">Private Office</h3>
+                        <div class="text-3xl font-bold my-3 text-white">$499<span class="text-lg font-normal text-white">/mo</span></div>
+                        <div class="text-sm text-primary font-bold">Professional Setup</div>
+                    </div>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-primary w-4 h-4 mr-2 mt-1"></i>
+                            <span class="text-white">Private enclosed office</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-primary w-4 h-4 mr-2 mt-1"></i>
+                            <span class="text-white">Furniture included</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-primary w-4 h-4 mr-2 mt-1"></i>
+                            <span class="text-white">All Dedicated Desk benefits</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-primary w-4 h-4 mr-2 mt-1"></i>
+                            <span class="text-white">10hrs meeting room/month</span>
+                        </li>
+                    </ul>
+                    <button class="w-full btn-primary text-white py-3 rounded-lg hover:bg-opacity-90 transition">Sign Up</button>
+                </div>
+                
+                <!-- Virtual Office Card -->
+                <div class="membership-card bg-white bg-opacity-10 rounded-xl p-6 shadow-lg transition duration-300">
+                    <div class="text-center mb-6">
+                        <div class="bg-white bg-opacity-20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-feather="mail" class="text-white w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-heading font-bold text-white">Virtual Office</h3>
+                        <div class="text-3xl font-bold my-3 text-white">$49<span class="text-lg font-normal text-white">/mo</span></div>
+                        <div class="text-sm text-primary font-bold">Business Address</div>
+                    </div>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-primary w-4 h-4 mr-2 mt-1"></i>
+                            <span class="text-white">Professional business address</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-primary w-4 h-4 mr-2 mt-1"></i>
+                            <span class="text-white">Mail handling & forwarding</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-primary w-4 h-4 mr-2 mt-1"></i>
+                            <span class="text-white">Access to meeting rooms (hourly rate)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-primary w-4 h-4 mr-2 mt-1"></i>
+                            <span class="text-white">Discount on day passes</span>
+                        </li>
+                    </ul>
+                    <button class="w-full btn-primary text-white py-3 rounded-lg hover:bg-opacity-90 transition">Sign Up</button>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <button id="compare-toggle" class="text-white font-bold underline hover:text-primary-light transition">Compare All Memberships</button>
+                <div id="comparison-table" class="hidden mt-8 bg-white bg-opacity-10 rounded-xl p-6 shadow-lg">
+                    <table class="w-full">
+                        <thead>
+                            <tr class="border-b border-gray-300">
+                                <th class="text-left py-3 text-white">Feature</th>
+                                <th class="py-3 text-white">Hot Desk</th>
+                                <th class="py-3 text-white">Dedicated Desk</th>
+                                <th class="py-3 text-white">Private Office</th>
+                                <th class="py-3 text-white">Virtual Office</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-300">
+                            <tr>
+                                <td class="text-left py-3 text-white">24/7 Access</td>
+                                <td class="text-center"><i data-feather="check" class="text-primary w-4 h-4 mx-auto"></i></td>
+                                <td class="text-center"><i data-feather="check" class="text-primary w-4 h-4 mx-auto"></i></td>
+                                <td class="text-center"><i data-feather="check" class="text-primary w-4 h-4 mx-auto"></i></td>
+                                <td class="text-center"><i data-feather="x" class="text-gray-400 w-4 h-4 mx-auto"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left py-3 text-white">Personal Storage</td>
+                                <td class="text-center"><i data-feather="x" class="text-gray-400 w-4 h-4 mx-auto"></i></td>
+                                <td class="text-center"><i data-feather="check" class="text-primary w-4 h-4 mx-auto"></i></td>
+                                <td class="text-center"><i data-feather="check" class="text-primary w-4 h-4 mx-auto"></i></td>
+                                <td class="text-center"><i data-feather="x" class="text-gray-400 w-4 h-4 mx-auto"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left py-3 text-white">Mail Handling</td>
+                                <td class="text-center"><i data-feather="x" class="text-gray-400 w-4 h-4 mx-auto"></i></td>
+                                <td class="text-center"><i data-feather="x" class="text-gray-400 w-4 h-4 mx-auto"></i></td>
+                                <td class="text-center"><i data-feather="check" class="text-primary w-4 h-4 mx-auto"></i></td>
+                                <td class="text-center"><i data-feather="check" class="text-primary w-4 h-4 mx-auto"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left py-3 text-white">Meeting Room Hours</td>
+                                <td class="text-center text-white">-</td>
+                                <td class="text-center text-white">5 hrs</td>
+                                <td class="text-center text-white">10 hrs</td>
+                                <td class="text-center text-white">Pay as you go</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities Section -->
+    <section id="amenities" class="py-20 section-white text-black">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-heading font-bold text-primary text-center mb-4">Fuel Your Productivity</h2>
+            <p class="text-xl text-center mb-12 max-w-3xl mx-auto">Everything you need to focus, create, and collaborate in one inspiring space</p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+                <div class="amenity-item text-center">
+                    <div class="amenity-icon bg-primary bg-opacity-10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
+                        <i data-feather="wifi" class="text-primary w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-primary">High-Speed WiFi</h3>
+                </div>
+                <div class="amenity-item text-center">
+                    <div class="amenity-icon bg-primary bg-opacity-10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
+                        <i data-feather="coffee" class="text-primary w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-primary">Premium Coffee</h3>
+                </div>
+                <div class="amenity-item text-center">
+                    <div class="amenity-icon bg-primary bg-opacity-10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
+                        <i data-feather="users" class="text-primary w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-primary">Meeting Rooms</h3>
+                </div>
+                <div class="amenity-item text-center">
+                    <div class="amenity-icon bg-primary bg-opacity-10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
+                        <i data-feather="printer" class="text-primary w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-primary">Printing</h3>
+                </div>
+                <div class="amenity-item text-center">
+                    <div class="amenity-icon bg-primary bg-opacity-10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
+                        <i data-feather="monitor" class="text-primary w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-primary">Conference Tech</h3>
+                </div>
+                <div class="amenity-item text-center">
+                    <div class="amenity-icon bg-primary bg-opacity-10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
+                        <i data-feather="lock" class="text-primary w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-primary">Secure Storage</h3>
+                </div>
+                <div class="amenity-item text-center">
+                    <div class="amenity-icon bg-primary bg-opacity-10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
+                        <i data-feather="droplet" class="text-primary w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-primary">Wellness Room</h3>
+                </div>
+                <div class="amenity-item text-center">
+                    <div class="amenity-icon bg-primary bg-opacity-10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
+                        <i data-feather="smile" class="text-primary w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-primary">Community Events</h3>
+                </div>
+            </div>
+            
+            <div class="bg-primary bg-opacity-10 rounded-xl shadow-xl overflow-hidden">
+                <div class="aspect-w-16 aspect-h-9">
+                    <div class="w-full h-96 bg-gray-200 flex items-center justify-center">
+                        <div class="text-center">
+                            <i data-feather="video" class="w-12 h-12 text-primary mx-auto mb-4"></i>
+                            <h3 class="text-xl font-bold text-primary">360° Virtual Tour</h3>
+                            <p class="text-dark">Coming soon!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 section-gradient text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-heading font-bold text-white text-center mb-12">What Our Members Say</h2>
+            
+            <div class="relative overflow-hidden">
+                <div id="testimonial-slider" class="flex transition-transform duration-500">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-slide flex-shrink-0 w-full">
+                        <div class="max-w-4xl mx-auto bg-white bg-opacity-10 rounded-xl p-8 md:p-12 shadow-lg">
+                            <div class="flex items-center mb-6">
+                                <div class="flex space-x-1">
+                                    <i data-feather="star" class="text-primary w-5 h-5"></i>
+                                    <i data-feather="star" class="text-primary w-5 h-5"></i>
+                                    <i data-feather="star" class="text-primary w-5 h-5"></i>
+                                    <i data-feather="star" class="text-primary w-5 h-5"></i>
+                                    <i data-feather="star" class="text-primary w-5 h-5"></i>
+                                </div>
+                            </div>
+                            <blockquote class="text-xl italic mb-8">
+                                "Powerhouse has transformed the way I work. The energy here is contagious and I've made more business connections in 3 months than I did in 3 years working from home."
+                            </blockquote>
+                            <div class="flex items-center">
+                                <img src="http://static.photos/people/200x200/1" alt="Sarah J." class="w-12 h-12 rounded-full mr-4">
+                                <div>
+                                    <h4 class="font-bold text-white">Sarah J.</h4>
+                                    <p class="text-white">Freelance Designer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-slide flex-shrink-0 w-full">
+                        <div class="max-w-4xl mx-auto bg-white bg-opacity-10 rounded-xl p-8 md:p-12 shadow-lg">
+                            <div class="flex items-center mb-6">
+                                <div class="flex space-x-1">
+                                    <i data-feather="star" class="text-primary w-5 h-5"></i>
+                                    <i data-feather="star" class="text-primary w-5 h-5"></i>
+                                    <i data-feather="star" class="text-primary w-5 h-5"></i>
+                                    <i data-feather="star" class="text-primary w-5 h-5"></i>
+                                    <i data-feather="star" class="text-primary w-5 h-5"></i>
+                                </div>
+                            </div>
+                            <blockquote class="text-xl italic mb-8">
+                                "As a startup founder, having a professional space that's also flexible has been game-changing. The Powerhouse team goes above and beyond to support our growth."
+                            </blockquote>
+                            <div class="flex items-center">
+                                <img src="http://static.photos/people/200x200/2" alt="Michael T." class="w-12 h-12 rounded-full mr-4">
+                                <div>
+                                    <h4 class="font-bold text-white">Michael T.</h4>
+                                    <p class="text-white">Tech Startup CEO</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-slide flex-shrink-0 w-full">
+                        <div class="max-w-4xl mx-auto bg-white bg-opacity-10 rounded-xl p-8 md:p-12 shadow-lg">
+                            <div class="flex items-center mb-6">
+                                <div class="flex space-x-1">
+                                    <i data-feather="star" class="text-primary w-5 h-5"></i>
+                                    <i data-feather="star" class="text-primary w-5 h-5"></i>
+                                    <i data-feather="star" class="text-primary w-5 h-5"></i>
+                                    <i data-feather="star" class="text-primary w-5 h-5"></i>
+                                    <i data-feather="star" class="text-primary w-5 h-5"></i>
+                                </div>
+                            </div>
+                            <blockquote class="text-xl italic mb-8">
+                                "I've worked in several coworking spaces, but Powerhouse stands out for its community. The events are always valuable and I've found collaborators for multiple projects."
+                            </blockquote>
+                            <div class="flex items-center">
+                                <img src="http://static.photos/people/200x200/3" alt="Lisa M." class="w-12 h-12 rounded-full mr-4">
+                                <div>
+                                    <h4 class="font-bold text-white">Lisa M.</h4>
+                                    <p class="text-white">Marketing Consultant</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex justify-center mt-8 space-x-2">
+                    <button id="testimonial-prev" class="p-2 rounded-full bg-white bg-opacity-10 text-white hover:bg-opacity-20 transition">
+                        <i data-feather="chevron-left" class="w-5 h-5"></i>
+                    </button>
+                    <button id="testimonial-next" class="p-2 rounded-full bg-white bg-opacity-10 text-white hover:bg-opacity-20 transition">
+                        <i data-feather="chevron-right" class="w-5 h-5"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 section-white text-black">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-heading font-bold text-primary text-center mb-4">Join the Powerhouse</h2>
+            <p class="text-xl text-center mb-12 max-w-3xl mx-auto">Ready to experience the difference? Schedule a tour or ask us anything.</p>
+            
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <div class="bg-primary bg-opacity-10 rounded-xl p-6 mb-8">
+                        <h3 class="text-2xl font-heading font-bold mb-4">Our Location</h3>
+                        <div class="aspect-w-16 aspect-h-9 mb-4 rounded-lg overflow-hidden">
+                            <div class="w-full h-64 bg-gray-200 flex items-center justify-center">
+                                <i data-feather="map" class="w-12 h-12 text-primary mx-auto"></i>
+                            </div>
+                        </div>
+                        <address class="not-italic">
+                            <p class="mb-2"><i data-feather="map-pin" class="inline mr-2 w-4 h-4 text-primary"></i> 123 Innovation Way, Suite 100</p>
+                            <p class="mb-4">Tech District, Your City 12345</p>
+                            <p class="mb-2"><i data-feather="phone" class="inline mr-2 w-4 h-4 text-primary"></i> (555) 123-4567</p>
+                            <p><i data-feather="mail" class="inline mr-2 w-4 h-4 text-primary"></i> hello@powerhouse.com</p>
+                        </address>
+                    </div>
+                    
+                    <div class="bg-primary bg-opacity-10 rounded-xl p-6">
+                        <h3 class="text-2xl font-heading font-bold mb-4">Frequently Asked Questions</h3>
+                        <div class="space-y-4">
+                            <div class="border-b border-white border-opacity-20 pb-4">
+                                <button class="faq-toggle w-full flex justify-between items-center text-left">
+                                    <span class="font-bold text-white">What are your hours of operation?</span>
+                                    <i data-feather="chevron-down" class="w-5 h-5 transform transition-transform text-white"></i>
+                                </button>
+                                <div class="faq-content hidden mt-2">
+                                    <p class="text-white">Our space is open 24/7 for all members. Our staffed hours are Monday-Friday from 8:00 AM to 6:00 PM.</p>
+                                </div>
+                            </div>
+                            <div class="border-b border-white border-opacity-20 pb-4">
+                                <button class="faq-toggle w-full flex justify-between items-center text-left">
+                                    <span class="font-bold text-white">Is parking available?</span>
+                                    <i data-feather="chevron-down" class="w-5 h-5 transform transition-transform text-white"></i>
+                                </button>
+                                <div class="faq-content hidden mt-2">
+                                    <p class="text-white">Yes! We have dedicated parking spots for members and validated parking for guests visiting during staffed hours.</p>
+                                </div>
+                            </div>
+                            <div class="border-b border-white border-opacity-20 pb-4">
+                                <button class="faq-toggle w-full flex justify-between items-center text-left">
+                                    <span class="font-bold text-white">Can I try before I commit?</span>
+                                    <i data-feather="chevron-down" class="w-5 h-5 transform transition-transform text-white"></i>
+                                </button>
+                                <div class="faq-content hidden mt-2">
+                                    <p class="text-white">Absolutely! We offer free day passes for first-time visitors. Book a tour and we'll include a day pass to experience Powerhouse for yourself.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="bg-white rounded-xl shadow-xl p-6 md:p-8">
+                        <h3 class="text-2xl font-heading font-bold text-primary mb-6">Get in Touch</h3>
+                        <form id="contact-form">
+                            <div class="mb-4">
+                                <label for="name" class="block text-dark mb-2">Name</label>
+                                <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <div class="mb-4">
+                                <label for="email" class="block text-dark mb-2">Email</label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            <div class="mb-4">
+                                <label for="interest" class="block text-dark mb-2">Interested In</label>
+                                <select id="interest" name="interest" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                    <option value="">Select an option</option>
+                                    <option value="hot-desk">Hot Desk Membership</option>
+                                    <option value="dedicated-desk">Dedicated Desk</option>
+                                    <option value="private-office">Private Office</option>
+                                    <option value="virtual-office">Virtual Office</option>
+                                    <option value="event-space">Event Space Rental</option>
+                                    <option value="other">Other Inquiry</option>
+                                </select>
+                            </div>
+                            <div class="mb-6">
+                                <label for="message" class="block text-dark mb-2">Message</label>
+                                <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+                            </div>
+                            <button type="submit" class="w-full btn-primary text-white py-4 rounded-lg hover:bg-opacity-90 transition font-bold text-lg">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <span class="lightning-icon"></span>
+                        <span class="text-2xl font-heading font-bold">Powerhouse</span>
+                    </div>
+                    <p class="mb-4">Empowering innovators with flexible workspaces and a thriving community.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="hover:text-primary-light transition"><i data-feather="instagram"></i></a>
+                        <a href="#" class="hover:text-primary-light transition"><i data-feather="twitter"></i></a>
+                        <a href="#" class="hover:text-primary-light transition"><i data-feather="linkedin"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-heading font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="hover:text-primary-light transition">Home</a></li>
+                        <li><a href="#intro" class="hover:text-primary-light transition">Intro</a></li>
+                        <li><a href="#about" class="hover:text-primary-light transition">About</a></li>
+                        <li><a href="#memberships" class="hover:text-primary-light transition">Memberships</a></li>
+                        <li><a href="#amenities" class="hover:text-primary-light transition">Amenities</a></li>
+                        <li><a href="#contact" class="hover:text-primary-light transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-heading font-bold mb-4">Explore</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/blog.html" class="hover:text-primary-light transition">Blog</a></li>
+                        <li><a href="/events.html" class="hover:text-primary-light transition">Events</a></li>
+                        <li><a href="/gallery.html" class="hover:text-primary-light transition">Gallery</a></li>
+                        <li><a href="#" class="hover:text-primary-light transition">Careers</a></li>
+                        <li><a href="#" class="hover:text-primary-light transition">Partnerships</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-heading font-bold mb-4">Legal</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-primary-light transition">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-primary-light transition">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-primary-light transition">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8 text-center">
+                <p>© 2025 Powerhouse Coworking. All rights reserved.</p>
+            </div>
+        </div>
+        <button id="back-to-top" class="fixed bottom-8 right-8 btn-primary text-white p-3 rounded-full shadow-lg hover:bg-opacity-90 transition opacity-0 invisible">
+            <i data-feather="arrow-up" class="w-5 h-5"></i>
+        </button>
+    </footer>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-dark text-white p-4 z-50 hidden">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <p class="mb-4 md:mb-0">We use cookies to enhance your experience. By continuing to visit this site, you agree to our use of cookies.</p>
+            <div class="flex space-x-4">
+                <button id="cookie-accept" class="btn-primary text-white px-4 py-2 rounded hover:bg-opacity-90 transition">Accept</button>
+                <button id="cookie-decline" class="bg-transparent border border-white text-white px-4 py-2 rounded hover:bg-white hover:bg-opacity-10 transition">Decline</button>
+                <a href="#" class="text-white underline hover:text-primary-light transition">Learn More</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        VANTA.GLOBE({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x445c7b,
+            backgroundColor: 0x00000000, // Transparent to show gradient
+            size: 0.8
+        });
+
+        // Animation logic
+        (function () {
+            const horizontalSvg = document.querySelector('.horizontal-svg');
+            const verticalSvg = document.querySelector('.vertical-svg');
+            const powerSvg = document.querySelector('.power-svg');
+            const houseSvg = document.querySelector('.house-svg');
+            const verticalSingleSvg = document.querySelector('.vertical-svg .logo-svg');
+            const horizontalPower = horizontalSvg.querySelector('#power');
+            const horizontalHouse = horizontalSvg.querySelector('#house');
+            const verticalPower = verticalSvg.querySelector('#power');
+            const verticalHouse = verticalSvg.querySelector('#house');
+            const horizontalTaglinesContainer = horizontalSvg.querySelector('.taglines');
+            const verticalTaglinesContainer = verticalSvg.querySelector('.taglines');
+            const horizontalTaglines = horizontalTaglinesContainer.querySelectorAll('p');
+            const verticalTaglines = verticalTaglinesContainer.querySelectorAll('p');
+            const logoContainer = document.querySelector('.logo-container');
+
+            // Store original transforms
+            const originalHorizontalPower = horizontalPower.getAttribute('transform') || '';
+            const originalHorizontalHouse = horizontalHouse.getAttribute('transform') || '';
+            const originalVerticalPower = verticalPower.getAttribute('transform') || '';
+            const originalVerticalHouse = verticalHouse.getAttribute('transform') || '';
+
+            // Define cubic-bezier easing function
+            function cubicBezier(x1, y1, x2, y2) {
+                return function (t) {
+                    return 3 * t * (1 - t) ** 2 * y1 + 3 * t ** 2 * (1 - t) * y2 + t ** 3;
+                };
+            }
+            const ease = cubicBezier(0.22, 1, 0.36, 1);
+
+            // Horizontal animation calculations
+            function computeDeltaUserHorizontal() {
+                horizontalPower.setAttribute('transform', originalHorizontalPower);
+                horizontalHouse.setAttribute('transform', originalHorizontalHouse);
+                const containerRect = logoContainer.getBoundingClientRect();
+                const powerRect = horizontalPower.getBoundingClientRect();
+                const houseRect = horizontalHouse.getBoundingClientRect();
+                const ctmPower = powerSvg.getScreenCTM();
+                const scaleX = ctmPower.a;
+                const buffer = 40;
+                const dxPowerPx = containerRect.left + buffer - powerRect.left;
+                const dxHousePx = containerRect.right - buffer - houseRect.right;
+                const deltaPowerUser = dxPowerPx / scaleX;
+                const deltaHouseUser = dxHousePx / scaleX;
+                return { deltaPowerUser, deltaHouseUser };
+            }
+
+            // Vertical animation calculations
+            function computeDeltaUserVertical() {
+                verticalPower.setAttribute('transform', originalVerticalPower);
+                verticalHouse.setAttribute('transform', originalVerticalHouse);
+                const containerRect = logoContainer.getBoundingClientRect();
+                const powerRect = verticalPower.getBoundingClientRect();
+                const houseRect = verticalHouse.getBoundingClientRect();
+                const ctm = verticalSingleSvg.getScreenCTM();
+                const scaleY = ctm.d;
+                const buffer = 20;
+                const dyPowerPx = containerRect.top + buffer - powerRect.top;
+                const dyHousePx = containerRect.bottom - buffer - houseRect.bottom;
+                const deltaPowerUser = dyPowerPx / scaleY;
+                const deltaHouseUser = dyHousePx / scaleY;
+                return { deltaPowerUser, deltaHouseUser };
+            }
+
+            function animateGroup(group, originalTransform, startDelta, endDelta, duration, delay = 0, axis = 'x') {
+                const startTime = performance.now();
+                function step(timestamp) {
+                    const elapsed = Math.max(timestamp - startTime - delay, 0);
+                    const progress = Math.min(elapsed / duration, 1);
+                    const easedProgress = ease(progress);
+                    const currentDelta = startDelta + (endDelta - startDelta) * easedProgress;
+                    const translate = axis === 'x' ? `translate(${currentDelta}, 0)` : `translate(0, ${currentDelta})`;
+                    group.setAttribute('transform', `${translate} ${originalTransform}`.trim());
+                    if (progress < 1) {
+                        requestAnimationFrame(step);
+                    }
+                }
+                requestAnimationFrame(step);
+            }
+
+            function pinOnResize() {
+                const isHorizontal = window.innerWidth > 768;
+                if (isHorizontal) {
+                    if (horizontalSvg.classList.contains('out')) {
+                        const { deltaPowerUser, deltaHouseUser } = computeDeltaUserHorizontal();
+                        horizontalPower.setAttribute('transform', `translate(${deltaPowerUser}, 0) ${originalHorizontalPower}`.trim());
+                        horizontalHouse.setAttribute('transform', `translate(${deltaHouseUser}, 0) ${originalHorizontalHouse}`.trim());
+                    } else {
+                        horizontalPower.setAttribute('transform', originalHorizontalPower);
+                        horizontalHouse.setAttribute('transform', originalHorizontalHouse);
+                    }
+                } else {
+                    if (verticalSvg.classList.contains('out')) {
+                        const { deltaPowerUser, deltaHouseUser } = computeDeltaUserVertical();
+                        verticalPower.setAttribute('transform', `translate(0, ${deltaPowerUser}) ${originalVerticalPower}`.trim());
+                        verticalHouse.setAttribute('transform', `translate(0, ${deltaHouseUser}) ${originalVerticalHouse}`.trim());
+                    } else {
+                        verticalPower.setAttribute('transform', originalVerticalPower);
+                        verticalHouse.setAttribute('transform', originalVerticalHouse);
+                    }
+                }
+            }
+
+            const phraseVisibleTime = 2200;
+            const pauseBetweenPhrases = 500;
+
+            function wait(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+
+            async function runTaglineAnimation(taglines) {
+                await wait(1200);
+                for (const tagline of taglines) {
+                    tagline.classList.add('visible');
+                    await wait(phraseVisibleTime);
+                    tagline.classList.remove('visible');
+                    await wait(pauseBetweenPhrases);
+                }
+            }
+
+            async function runCycle() {
+                const isHorizontal = window.innerWidth > 768;
+                const activeSvg = isHorizontal ? horizontalSvg : verticalSvg;
+                const activePower = isHorizontal ? horizontalPower : verticalPower;
+                const activeHouse = isHorizontal ? horizontalHouse : verticalHouse;
+                const activeTaglinesContainer = isHorizontal ? horizontalTaglinesContainer : verticalTaglinesContainer;
+                const activeTaglines = isHorizontal ? horizontalTaglines : verticalTaglines;
+                const computeDeltaUser = isHorizontal ? computeDeltaUserHorizontal : computeDeltaUserVertical;
+                const axis = isHorizontal ? 'x' : 'y';
+                const originalPower = isHorizontal ? originalHorizontalPower : originalVerticalPower;
+                const originalHouse = isHorizontal ? originalHorizontalHouse : originalVerticalHouse;
+
+                setTimeout(() => {
+                    const { deltaPowerUser, deltaHouseUser } = computeDeltaUser();
+                    activeSvg.classList.add('out');
+                    activeTaglinesContainer.style.display = 'block';
+                    animateGroup(activePower, originalPower, 0, deltaPowerUser, 1200, 0, axis);
+                    animateGroup(activeHouse, originalHouse, 0, deltaHouseUser, 1200, 0, axis);
+                    runTaglineAnimation(activeTaglines).then(() => {
+                        activeSvg.classList.remove('out');
+                        activeTaglinesContainer.style.display = 'none';
+                        animateGroup(activePower, originalPower, deltaPowerUser, 0, 1200, 0, axis);
+                        animateGroup(activeHouse, originalHouse, deltaHouseUser, 0, 1200, 0, axis);
+                    });
+                }, 3000);
+            }
+
+            window.addEventListener('load', () => {
+                runCycle();
+                setInterval(runCycle, 13600);
+            });
+
+            window.addEventListener('resize', pinOnResize);
+        })();
+
+        // Navbar and scroll arrow behavior
+        const header = document.querySelector('header');
+        const heroSection = document.querySelector('#home');
+        const scrollArrow = document.querySelector('.scroll-arrow');
+        let hasScrolled = false;
+
+        function handleScroll() {
+            const heroBottom = heroSection.getBoundingClientRect().bottom;
+            const scrollPosition = window.scrollY;
+            const heroHeight = window.innerHeight; // Hero section is h-screen (100vh)
+            const arrowThreshold = heroHeight * 0.5; // Hide arrow after 50% of hero height
+
+            // Sticky navbar logic
+            if (heroBottom <= 0) {
+                header.classList.add('sticky');
+            } else {
+                header.classList.remove('sticky');
+            }
+
+            // Scroll arrow visibility logic
+            if (scrollArrow) {
+                if (scrollPosition > arrowThreshold && !hasScrolled) {
+                    scrollArrow.style.display = 'none';
+                    hasScrolled = true;
+                } else if (scrollPosition === 0 && hasScrolled) {
+                    scrollArrow.style.display = 'block';
+                    hasScrolled = false;
+                }
+            }
+        }
+
+        // Handle scroll events
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('load', handleScroll);
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            const icon = mobileMenuButton.querySelector('svg');
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+                icon.setAttribute('data-feather', 'x');
+                feather.replace();
+            } else {
+                mobileMenu.classList.add('hidden');
+                icon.setAttribute('data-feather', 'menu');
+                feather.replace();
+            }
+        });
+
+        // Testimonial slider
+        const testimonialSlider = document.getElementById('testimonial-slider');
+        const prevButton = document.getElementById('testimonial-prev');
+        const nextButton = document.getElementById('testimonial-next');
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const totalSlides = slides.length;
+
+        function updateSlider() {
+            testimonialSlider.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
+
+        nextButton.addEventListener('click', () => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlider();
+        });
+
+        prevButton.addEventListener('click', () => {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        });
+
+        // Auto-advance testimonials
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlider();
+        }, 8000);
+
+        // Membership comparison toggle
+        const compareToggle = document.getElementById('compare-toggle');
+        const comparisonTable = document.getElementById('comparison-table');
+
+        compareToggle.addEventListener('click', () => {
+            if (comparisonTable.classList.contains('hidden')) {
+                comparisonTable.classList.remove('hidden');
+                compareToggle.textContent = 'Hide Comparison';
+            } else {
+                comparisonTable.classList.add('hidden');
+                compareToggle.textContent = 'Compare All Memberships';
+            }
+        });
+
+        // FAQ accordion
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const content = toggle.nextElementSibling;
+                const icon = toggle.querySelector('svg');
+                
+                if (content.classList.contains('hidden')) {
+                    content.classList.remove('hidden');
+                    icon.style.transform = 'rotate(180deg)';
+                } else {
+                    content.classList.add('hidden');
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            });
+        });
+
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Cookie consent banner
+        const cookieBanner = document.getElementById('cookie-banner');
+        const cookieAccept = document.getElementById('cookie-accept');
+        const cookieDecline = document.getElementById('cookie-decline');
+
+        if (!localStorage.getItem('cookieConsent')) {
+            setTimeout(() => {
+                cookieBanner.classList.remove('hidden');
+            }, 2000);
+        }
+
+        cookieAccept.addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'accepted');
+            cookieBanner.classList.add('hidden');
+        });
+
+        cookieDecline.addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'declined');
+            cookieBanner.classList.add('hidden');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        const icon = mobileMenuButton.querySelector('svg');
+                        icon.setAttribute('data-feather', 'menu');
+                        feather.replace();
+                    }
+                }
+            });
+        });
+
+        // Contact form submission
+        const contactForm = document.getElementById('contact-form');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            alert('Thank you for your message! We will get back to you soon.');
+            contactForm.reset();
+        });
+
+        // Initialize feather icons
+        feather.replace();
+
+        // Add fade-in animation to sections as they come into view
+        const sections = document.querySelectorAll('section');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });    
+    </script>
+</body>
+</html>

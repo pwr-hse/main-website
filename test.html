@@ -1,0 +1,341 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>POWER / HOUSE Animation</title>
+<style>
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+body {
+font-family: system-ui, -apple-system, sans-serif;
+background: #111;
+color: white;
+overflow-x: hidden;
+}
+.hero {
+height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+background: #181818;
+position: relative;
+border: 2px solid white;
+}
+.logo-container {
+width: 100%;
+max-width: none;
+display: flex;
+justify-content: center;
+align-items: center;
+background: transparent;
+position: relative;
+}
+.logo-svg {
+border: 2px solid red;
+overflow: visible;
+}
+#power, #house {
+will-change: transform;
+}
+.taglines {
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+text-align: center;
+display: none;
+width: 100%;
+max-width: 400px;
+height: 2.5em;
+overflow: hidden;
+}
+.taglines p {
+font-size: 2rem;
+margin: 0;
+white-space: nowrap;
+opacity: 0;
+visibility: hidden;
+transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+}
+.taglines p.visible {
+opacity: 1;
+visibility: visible;
+}
+.content {
+padding: 60px 20px;
+text-align: center;
+background: #222;
+}
+.content h2 {
+font-size: 2.5rem;
+margin-bottom: 20px;
+}
+.content p {
+font-size: 1.2rem;
+max-width: 600px;
+margin: 0 auto;
+line-height: 1.6;
+}
+@media (min-width: 769px) {
+.horizontal-svg {
+display: contents;
+}
+.vertical-svg {
+display: none;
+}
+.logo-svg {
+width: 30%;
+height: auto;
+}
+}
+@media (max-width: 768px) {
+body {
+height: auto;
+overflow-y: auto;
+}
+.hero {
+height: auto;
+min-height: 50vh;
+}
+.horizontal-svg {
+display: none;
+}
+.vertical-svg {
+display: contents;
+}
+.logo-svg {
+width: 100%;
+height: auto;
+max-height: 70vh;
+}
+.taglines p {
+font-size: clamp(0.8rem, 1.5rem, 1.8rem);
+}
+}
+</style>
+</head>
+<body>
+<section class="hero">
+<div class="logo-container">
+<!-- Horizontal Animation SVGs -->
+<div class="horizontal-svg">
+<svg class="logo-svg power-svg" viewBox="0 0 718.67 802.67" overflow="visible" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<clipPath id="clipPath2">
+<path transform="translate(-39.59 -441.19)" d="m0 527h539v-527h-539z"/>
+</clipPath>
+</defs>
+<g id="power" transform="matrix(1.3333 0 0 -1.3333 52.787 400.285)">
+<path d="m0 0h-5.36v56.85h5.36c18.23 0 23.6-8.04 23.6-28.69s-5.36-28.15-23.6-28.15m-5.36-85.28v58.46h8.58c36.74 0 52.56 19.84 52.56 55.24s-15.82 55.24-52.56 55.24h-41.56v-168.93h32.98zm166.25 73.21v22.52c0 48.27-13.67 75.35-50.14 75.35s-50.41-27.35-50.41-75.35v-22.52c0-48 13.94-75.35 50.41-75.35s50.14 27.08 50.14 75.35m-65.96-15.82v54.16c0 19.58 2.95 32.45 15.82 32.45s15.82-12.87 15.82-32.45v-54.16c0-19.58-2.95-32.45-15.82-32.45s-15.82 12.87-15.82 32.45m182.94 111.55-14.19-97.61h-1.05l-14.45 97.61h-24.44l-14.19-97.61h-1.05l-14.45 97.61h-31.01l27.86-168.93h30.48l13.40 94.12h1.05l13.66-94.12h30.48l27.86 168.93zm113.67-168.94v27.35h-46.66v45.32h34.59v27.35h-34.59v41.56h46.12v27.36h-78.57v-168.93h79.1zm71.59 0h32.98c-4.29 8.58-3.75 17.7-5.09 39.15-1.07 20.65-6.17 34.05-24.13 38.08 17.16 2.95 28.69 15.82 28.69 42.37 0 30.03-15.55 49.34-52.02 49.34h-43.17v-168.93h32.71v64.36h6.97c14.75 0 17.97-9.12 19.04-26.55 1.07-21.18 1.61-30.57 4.02-37.81m-24.13 90.63h-5.9v51.48h5.9c17.97 0 23.87-8.85 23.87-25.74 0-19.04-5.9-25.74-23.87-25.74" clip-path="url(#clipPath2)" fill="#fff"/>
+</g>
+</svg>
+<svg class="logo-svg house-svg" viewBox="0 0 718.67 802.67" overflow="visible" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<clipPath id="clipPath4">
+<path transform="translate(0 -152.93)" d="m0 527h539v-527h-539z"/>
+</clipPath>
+</defs>
+<g id="house" transform="matrix(1.3333 0 0 -1.3333 0 514.1425)">
+<path d="m0 0h33.92v72.67h34.51v-72.67h33.92v168.93h-33.92v-68.91h-34.51v68.91h-33.92zm219.61 73.2v22.52c0 48.27-13.95 75.35-51.15 75.35s-51.42-27.35-51.42-75.35v-22.52c0-48 14.22-75.35 51.42-75.35s51.15 27.08 51.15 75.35m-67.28-15.82v54.17c0 19.57 3.01 32.45 16.14 32.45s16.14-12.87 16.14-32.45v-54.17c0-19.57-3.01-32.44-16.14-32.44s-16.14 12.87-16.14 32.44m133.03-59.79c38.57 0 50.6 23.86 50.6 58.19v113.16h-34.73v-115.3c0-18.5-3.01-28.69-15.86-28.69s-15.59 10.19-15.59 28.69v115.3h-34.74v-113.16c0-34.32 11.76-58.19 50.33-58.19m92.92 60.6h-30.09v-9.65c0-34.06 18.33-50.68 47.59-50.68s47.04 16.89 47.04 47.19c0 26.01-13.67 37.81-33.37 49.34l-15.59 9.65c-8.75 5.36-13.95 10.73-13.95 22.26s4.65 18.23 14.22 18.23c10.67 0 15.86-7.78 15.86-23.33v-9.92h29.81v9.65c0 32.45-15.86 50.14-45.68 50.14-27.62 0-45.4-18.77-45.4-46.93s14.77-39.95 31.45-49.88l14.22-8.85c10.67-6.7 16.96-10.99 16.96-23.06s-4.92-17.97-15.59-17.97c-11.76 0-17.5 8.85-17.5 23.6v10.19zm160.26-58.19v27.35h-48.3v45.32h35.99v27.35h-35.99v41.56h47.75v27.35h-80.85v-168.93h81.39z" clip-path="url(#clipPath4)" fill="#fff"/>
+</g>
+</svg>
+<div class="taglines">
+<p>Tagline One</p>
+<p>Tagline Two</p>
+<p>Tagline Three</p>
+</div>
+</div>
+<!-- Vertical Animation SVG -->
+<div class="vertical-svg">
+<svg class="logo-svg" viewBox="0 0 718.67 802.67" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" overflow="visible">
+<defs>
+<clipPath id="clipPath2">
+<path transform="translate(-39.59 -441.19)" d="m0 527h539v-527h-539z"/>
+</clipPath>
+<clipPath id="clipPath4">
+<path transform="translate(0 -152.93)" d="m0 527h539v-527h-539z"/>
+</clipPath>
+</defs>
+<g id="house">
+<path transform="matrix(1.3333 0 0 -1.3333 0 648.76)" d="m0 0h33.92v72.67h34.51v-72.67h33.92v168.93h-33.92v-68.91h-34.51v68.91h-33.92zm219.61 73.2v22.52c0 48.27-13.95 75.35-51.15 75.35s-51.42-27.35-51.42-75.35v-22.52c0-48 14.22-75.35 51.42-75.35s51.15 27.08 51.15 75.35m-67.28-15.82v54.17c0 19.57 3.01 32.45 16.14 32.45s16.14-12.87 16.14-32.45v-54.17c0-19.57-3.01-32.44-16.14-32.44s-16.14 12.87-16.14 32.44m133.03-59.79c38.57 0 50.6 23.86 50.6 58.19v113.16h-34.73v-115.3c0-18.5-3.01-28.69-15.86-28.69s-15.59 10.19-15.59 28.69v115.3h-34.74v-113.16c0-34.32 11.76-58.19 50.33-58.19m92.92 60.6h-30.09v-9.65c0-34.06 18.33-50.68 47.59-50.68s47.04 16.89 47.04 47.19c0 26.01-13.67 37.81-33.37 49.34l-15.59 9.65c-8.75 5.36-13.95 10.73-13.95 22.26s4.65 18.23 14.22 18.23c10.67 0 15.86-7.78 15.86-23.33v-9.92h29.81v9.65c0 32.45-15.86 50.14-45.68 50.14-27.62 0-45.4-18.77-45.4-46.93s14.77-39.95 31.45-49.88l14.22-8.85c10.67-6.7 16.96-10.99 16.96-23.06s-4.92-17.97-15.59-17.97c-11.76 0-17.5 8.85-17.5 23.6v10.19zm160.26-58.19v27.35h-48.3v45.32h35.99v27.35h-35.99v41.56h47.75v27.35h-80.85v-168.93h81.39z" clip-path="url(#clipPath4)" fill="#fff"/>
+</g>
+<g id="power">
+<path transform="matrix(1.3333 0 0 -1.3333 52.787 264.41)" d="m0 0h-5.36v56.85h5.36c18.23 0 23.6-8.04 23.6-28.69s-5.36-28.15-23.60-28.15m-5.36-85.28v58.46h8.58c36.74 0 52.56 19.84 52.56 55.24s-15.82 55.24-52.56 55.24h-41.56v-168.93h32.98zm166.25 73.21v22.52c0 48.27-13.67 75.35-50.14 75.35s-50.41-27.35-50.41-75.35v-22.52c0-48 13.94-75.35 50.41-75.35s50.14 27.08 50.14 75.35m-65.96-15.82v54.16c0 19.58 2.95 32.45 15.82 32.45s15.82-12.87 15.82-32.45v-54.16c0-19.58-2.95-32.45-15.82-32.45s-15.82 12.87-15.82 32.45m182.94 111.55-14.19-97.61h-1.05l-14.45 97.61h-24.44l-14.19-97.61h-1.05l-14.45 97.61h-31.01l27.86-168.93h30.48l13.40 94.12h1.05l13.66-94.12h30.48l27.86 168.93zm113.67-168.94v27.35h-46.66v45.32h34.59v27.35h-34.59v41.56h46.12v27.36h-78.57v-168.93h79.1zm71.59 0h32.98c-4.29 8.58-3.75 17.7-5.09 39.15-1.07 20.65-6.17 34.05-24.13 38.08 17.16 2.95 28.69 15.82 28.69 42.37 0 30.03-15.55 49.34-52.02 49.34h-43.17v-168.93h32.71v64.36h6.97c14.75 0 17.97-9.12 19.04-26.55 1.07-21.18 1.61-30.57 4.02-37.81m-24.13 90.63h-5.9v51.48h5.9c17.97 0 23.87-8.85 23.87-25.74 0-19.04-5.9-25.74-23.87-25.74" clip-path="url(#clipPath2)" fill="#fff"/>
+</g>
+</svg>
+<div class="taglines">
+<p>Tagline One</p>
+<p>Tagline Two</p>
+<p>Tagline Three</p>
+</div>
+</div>
+</div>
+</section>
+  
+    Your Content Goes Here
+    This is where the rest of your website content would appear. The hero section above contains the animated POWER/HOUSE SVG.
+  
+  <script>
+    (function () {
+      const horizontalSvg = document.querySelector('.horizontal-svg');
+      const verticalSvg = document.querySelector('.vertical-svg');
+      const powerSvg = document.querySelector('.power-svg');
+      const houseSvg = document.querySelector('.house-svg');
+      const verticalSingleSvg = document.querySelector('.vertical-svg .logo-svg');
+      const horizontalPower = horizontalSvg.querySelector('#power');
+      const horizontalHouse = horizontalSvg.querySelector('#house');
+      const verticalPower = verticalSvg.querySelector('#power');
+      const verticalHouse = verticalSvg.querySelector('#house');
+      const horizontalTaglinesContainer = horizontalSvg.querySelector('.taglines');
+      const verticalTaglinesContainer = verticalSvg.querySelector('.taglines');
+      const horizontalTaglines = horizontalTaglinesContainer.querySelectorAll('p');
+      const verticalTaglines = verticalTaglinesContainer.querySelectorAll('p');
+      const logoContainer = document.querySelector('.logo-container');
+
+      // Store original transforms
+      const originalHorizontalPower = horizontalPower.getAttribute('transform') || '';
+      const originalHorizontalHouse = horizontalHouse.getAttribute('transform') || '';
+      const originalVerticalPower = verticalPower.getAttribute('transform') || '';
+      const originalVerticalHouse = verticalHouse.getAttribute('transform') || '';
+
+      // Define cubic-bezier easing function
+      function cubicBezier(x1, y1, x2, y2) {
+        return function (t) {
+          return 3 * t * (1 - t) ** 2 * y1 + 3 * t ** 2 * (1 - t) * y2 + t ** 3;
+        };
+      }
+      const ease = cubicBezier(0.22, 1, 0.36, 1);
+
+      // Horizontal animation calculations
+      function computeDeltaUserHorizontal() {
+        horizontalPower.setAttribute('transform', originalHorizontalPower);
+        horizontalHouse.setAttribute('transform', originalHorizontalHouse);
+        const containerRect = logoContainer.getBoundingClientRect();
+        const powerRect = horizontalPower.getBoundingClientRect();
+        const houseRect = horizontalHouse.getBoundingClientRect();
+        const ctmPower = powerSvg.getScreenCTM();
+        const scaleX = ctmPower.a;
+        const buffer = 80;
+        const dxPowerPx = containerRect.left + buffer - powerRect.left;
+        const dxHousePx = containerRect.right - buffer - houseRect.right;
+        const deltaPowerUser = dxPowerPx / scaleX;
+        const deltaHouseUser = dxHousePx / scaleX;
+        return { deltaPowerUser, deltaHouseUser };
+      }
+
+      // Vertical animation calculations
+      function computeDeltaUserVertical() {
+        verticalPower.setAttribute('transform', originalVerticalPower);
+        verticalHouse.setAttribute('transform', originalVerticalHouse);
+        const containerRect = logoContainer.getBoundingClientRect();
+        const powerRect = verticalPower.getBoundingClientRect();
+        const houseRect = verticalHouse.getBoundingClientRect();
+        const ctm = verticalSingleSvg.getScreenCTM();
+        const scaleY = ctm.d;
+        const buffer = 20;
+        const dyPowerPx = containerRect.top + buffer - powerRect.top;
+        const dyHousePx = containerRect.bottom - buffer - houseRect.bottom;
+        const deltaPowerUser = dyPowerPx / scaleY;
+        const deltaHouseUser = dyHousePx / scaleY;
+        return { deltaPowerUser, deltaHouseUser };
+      }
+
+      function animateGroup(group, originalTransform, startDelta, endDelta, duration, delay = 0, axis = 'x') {
+        const startTime = performance.now();
+        function step(timestamp) {
+          const elapsed = Math.max(timestamp - startTime - delay, 0);
+          const progress = Math.min(elapsed / duration, 1);
+          const easedProgress = ease(progress);
+          const currentDelta = startDelta + (endDelta - startDelta) * easedProgress;
+          const translate = axis === 'x' ? `translate(${currentDelta}, 0)` : `translate(0, ${currentDelta})`;
+          group.setAttribute('transform', `${translate} ${originalTransform}`.trim());
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          }
+        }
+        requestAnimationFrame(step);
+      }
+
+      function pinOnResize() {
+        const isHorizontal = window.innerWidth > 768;
+        if (isHorizontal) {
+          if (horizontalSvg.classList.contains('out')) {
+            const { deltaPowerUser, deltaHouseUser } = computeDeltaUserHorizontal();
+            horizontalPower.setAttribute('transform', `translate(${deltaPowerUser}, 0) ${originalHorizontalPower}`.trim());
+            horizontalHouse.setAttribute('transform', `translate(${deltaHouseUser}, 0) ${originalHorizontalHouse}`.trim());
+          } else {
+            horizontalPower.setAttribute('transform', originalHorizontalPower);
+            horizontalHouse.setAttribute('transform', originalHorizontalHouse);
+          }
+        } else {
+          if (verticalSvg.classList.contains('out')) {
+            const { deltaPowerUser, deltaHouseUser } = computeDeltaUserVertical();
+            verticalPower.setAttribute('transform', `translate(0, ${deltaPowerUser}) ${originalVerticalPower}`.trim());
+            verticalHouse.setAttribute('transform', `translate(0, ${deltaHouseUser}) ${originalVerticalHouse}`.trim());
+          } else {
+            verticalPower.setAttribute('transform', originalVerticalPower);
+            verticalHouse.setAttribute('transform', originalVerticalHouse);
+          }
+        }
+      }
+
+      const phraseVisibleTime = 2200;
+      const pauseBetweenPhrases = 500;
+
+      function wait(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+
+      async function runTaglineAnimation(taglines) {
+        for (const tagline of taglines) {
+          tagline.classList.add('visible');
+          await wait(phraseVisibleTime);
+          tagline.classList.remove('visible');
+          await wait(pauseBetweenPhrases);
+        }
+      }
+
+      async function runCycle() {
+        const isHorizontal = window.innerWidth > 768;
+        const activeSvg = isHorizontal ? horizontalSvg : verticalSvg;
+        const activePower = isHorizontal ? horizontalPower : verticalPower;
+        const activeHouse = isHorizontal ? horizontalHouse : verticalHouse;
+        const activeTaglinesContainer = isHorizontal ? horizontalTaglinesContainer : verticalTaglinesContainer;
+        const activeTaglines = isHorizontal ? horizontalTaglines : verticalTaglines;
+        const computeDeltaUser = isHorizontal ? computeDeltaUserHorizontal : computeDeltaUserVertical;
+        const axis = isHorizontal ? 'x' : 'y';
+        const originalPower = isHorizontal ? originalHorizontalPower : originalVerticalPower;
+        const originalHouse = isHorizontal ? originalHorizontalHouse : originalVerticalHouse;
+
+        setTimeout(() => {
+          const { deltaPowerUser, deltaHouseUser } = computeDeltaUser();
+          activeSvg.classList.add('out');
+          activeTaglinesContainer.style.display = 'block';
+          animateGroup(activePower, originalPower, 0, deltaPowerUser, 1200, 0, axis);
+          animateGroup(activeHouse, originalHouse, 0, deltaHouseUser, 1200, 0, axis);
+          runTaglineAnimation(activeTaglines).then(() => {
+            activeSvg.classList.remove('out');
+            activeTaglinesContainer.style.display = 'none';
+            animateGroup(activePower, originalPower, deltaPowerUser, 0, 1200, 0, axis);
+            animateGroup(activeHouse, originalHouse, deltaHouseUser, 0, 1200, 0, axis);
+          });
+        }, 3000);
+      }
+
+      window.addEventListener('load', () => {
+        runCycle();
+        setInterval(runCycle, 10800);
+      });
+
+      window.addEventListener('resize', pinOnResize);
+    })();
+  </script>
+</body>
+</html>
