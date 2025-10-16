@@ -15,22 +15,25 @@
     <script>
         tailwind.config = {
             theme: {
-                extend: {
-                    colors: {
-                        primary: '#445C7B',      // Steel Blue
-                        'primary-light': '#7EA9E0', // Light Blue
-                        gray: '#A09F98',         // Gray
-                        dark: '#000000',         // Black
-                        light: '#FFFFFF'         // White
-                    },
-                    fontFamily: {
-                        heading: ['Montserrat', 'sans-serif'],
-                        body: ['Open Sans', 'sans-serif']
-                    }
+            extend: {
+                colors: {
+                primary: '#445C7B',
+                'primary-light': '#7EA9E0',
+                accent: '#b66044',        // Burnt orange
+                'accent-600': '#A35339',  // Hover
+                'accent-700': '#8C462F',  // Active
+                gray: '#A09F98',
+                dark: '#000000',
+                light: '#FFFFFF'
+                },
+                fontFamily: {
+                heading: ['Montserrat', 'sans-serif'],
+                body: ['Open Sans', 'sans-serif']
                 }
             }
+            }
         }
-    </script>
+        </script>
     <style>
         html {
             scroll-behavior: smooth;
@@ -101,7 +104,7 @@
         }
         .amenity-item:hover .amenity-icon {
             transform: scale(1.1);
-            color: #445C7B;
+            color: #B66044;
         }
         .testimonial-slide {
             min-width: 100%;
@@ -137,8 +140,16 @@
             background-color: #445C7B;
         }
         .btn-primary:hover {
-            background: linear-gradient(to bottom, #445C7B 0%, #7EA9E0 100%);
+            background: linear-gradient(90deg, #445C7B 0%, #445C7B 50%, #B66044 100%);
+            }
+
+        .btn-accent { background-color: #B66044; }
+        .btn-accent:hover { background-color: #A35339; }
+        .btn-accent:active { background-color: #8C462F; }
+        .btn-outline-accent {
+            border: 2px solid #B66044; color: #B66044; background: transparent;
         }
+        .btn-outline-accent:hover { background-color: rgba(182,96,68,0.08); }
 
         /* Animation styles */
         .logo-container {
@@ -278,7 +289,7 @@
             </nav>
             <div class="flex items-center gap-3">
                 <a href="#contact"
-                    class="hidden md:inline-block btn-primary text-white px-4 py-2 rounded-full hover:bg-opacity-90 transition">
+   class="hidden md:inline-block btn-accent text-white px-4 py-2 rounded-full transition">
                     Book a Tour
                 </a>
                 <button id="mobile-menu-button" class="text-primary">
@@ -287,20 +298,17 @@
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white w-full border-t">
+        <div id="mobile-menu" class="hidden bg-white w-full border-t">
             <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
                 <a href="#home" class="text-primary hover:text-primary-light transition py-2">Home</a>
-                <a href="#intro" class="text-primary hover:text-primary-light transition py-2">Intro</a>
-                <a href="#about" class="text-primary hover:text-primary-light transition py-2">About</a>
                 <a href="#memberships" class="text-primary hover:text-primary-light transition py-2">Memberships</a>
-                <a href="#amenities" class="text-primary hover:text-primary-light transition py-2">Amenities</a>
                 <a href="/gallery.html" class="text-primary hover:text-primary-light transition py-2">Gallery</a>
                 <a href="/events.html" class="text-primary hover:text-primary-light transition py-2">Events</a>
                 <a href="/blog.html" class="text-primary hover:text-primary-light transition py-2">Blog</a>
                 <a href="#contact" class="text-primary hover:text-primary-light transition py-2">Contact</a>
                 <div class="flex space-x-4 py-2">
                     <a href="#" class="text-primary hover:text-primary-light"><i data-feather="instagram"></i></a>
-                    <a href="#" class="text-primary hover:text-primary-light"><i data-feather="twitter"></i></a>
+                    <a href="#" class="text-primary hover:text-primary-light"><i data-feather="facebook"></i></a>
                     <a href="#" class="text-primary hover:text-primary-light"><i data-feather="linkedin"></i></a>
                 </div>
                 <a href="#contact" class="btn-primary text-white px-4 py-2 rounded-full hover:bg-opacity-90 transition text-center">Book a Tour</a>
@@ -369,10 +377,12 @@
     <section id="intro" class="py-40 section-gradient text-white">
         <div class="container mx-auto px-4">
             <div class="text-center">
-                <h1 class="text-4xl md:text-6xl font-heading font-bold text-white mb-4">Unleash Your Potential at <span class="text-white">Powerhouse</span></h1>
-                <p class="text-xl md:text-2xl text-white mb-8">Empowering innovators with flexible workspaces and a thriving community.</p>
+                <h1 class="text-4xl md:text-6xl font-heading font-bold text-white mb-4">Powerhouse Christchurch <span class="text-white"></span></h1>
+                <p class="text-xl md:text-2xl text-white mb-8">Discover flexible coworking in Christchurch — modern spaces, inspiring people, and everything you need to thrive.</p>
                 <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 justify-center">
-                    <a href="#contact" class="btn-primary text-white px-6 py-3 rounded-full hover:bg-opacity-90 transition text-lg font-bold">Book a Free Tour</a>
+                    <a href="#contact" class="btn-accent text-white px-6 py-3 rounded-full transition text-lg font-bold">
+                        Book a Tour Today
+                    </a>
                     <a href="#memberships" class="btn-primary text-white px-6 py-3 rounded-full hover:bg-opacity-90 transition text-lg font-bold">Explore Memberships</a>
                 </div>
             </div>
@@ -382,51 +392,56 @@
     <!-- About Section -->
     <section id="about" class="py-20 section-white text-black">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-heading font-bold text-primary text-center mb-12">What Makes Powerhouse Different</h2>
+            <h2 class="text-3xl md:text-4xl font-heading font-bold text-primary text-center mb-12">
+            What Makes Powerhouse Different
+            </h2>
+
             <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
-                    <h3 class="text-2xl font-heading font-bold text-primary mb-4">Our Story</h3>
-                    <p class="text-lg mb-6">Founded in 2020, Powerhouse was born from the need for flexible, inspiring workspaces that foster collaboration and innovation. We've grown from a single location to a network of vibrant coworking hubs across the city.</p>
-                    
-                    <h3 class="text-2xl font-heading font-bold text-primary mb-4">Our Mission</h3>
-                    <p class="text-lg mb-6">To empower entrepreneurs, freelancers, and remote workers with more than just a desk - we provide the tools, community, and environment to help your business thrive.</p>
-                    
-                    <h3 class="text-2xl font-heading font-bold text-primary mb-4">Our Values</h3>
-                    <ul class="space-y-2">
-                        <li class="flex items-start">
-                            <span class="lightning-icon"></span>
-                            <span class="text-lg">Collaboration over competition</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="lightning-icon"></span>
-                            <span class="text-lg">Flexibility to grow at your pace</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="lightning-icon"></span>
-                            <span class="text-lg">Community that supports and inspires</span>
-                        </li>
-                    </ul>
+            <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+
+                <h3 class="text-2xl font-heading font-bold text-primary mb-4">Our Story</h3>
+                <p class="text-lg mb-6">
+                Powerhouse was created to bring something fresh to Christchurch — a coworking space where energy, connection, and ideas flow freely. We’re more than just desks and Wi-Fi; we’re a hub built to power the people shaping the future of our city.
+                </p>
+
+                <h3 class="text-2xl font-heading font-bold text-primary mb-4">Our Mission</h3>
+                <p class="text-lg mb-6">
+                To give entrepreneurs, freelancers, and remote teams a place to do their best work. At Powerhouse, coworking means flexibility, collaboration, and a community that’s genuinely invested in your success.
+                </p>
+
+                <h3 class="text-2xl font-heading font-bold text-primary mb-4">Our Values</h3>
+                <ul class="space-y-2">
+                <li class="flex items-start">
+                    <span class="text-lg">✨ Collaboration over competition</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-lg">🌿 Flexibility to grow on your terms</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-lg">🤝 A community that inspires and supports</span>
+                </li>
+                </ul>
                 </div>
                 <div class="md:w-1/2">
                     <div class="bg-white p-4 rounded-lg shadow-xl">
-                        <img src="http://static.photos/workspace/1024x576/1" alt="Powerhouse coworking space" class="w-full h-auto rounded-lg">
-                        <div class="mt-4 p-4 bg-primary text-white rounded-lg">
-                            <h4 class="font-heading font-bold text-xl mb-2">By the Numbers</h4>
-                            <div class="grid grid-cols-3 gap-4 text-center">
-                                <div>
-                                    <div class="text-3xl font-bold">500+</div>
-                                    <div class="text-sm">Members</div>
-                                </div>
-                                <div>
-                                    <div class="text-3xl font-bold">24/7</div>
-                                    <div class="text-sm">Access</div>
-                                </div>
-                                <div>
-                                    <div class="text-3xl font-bold">100+</div>
-                                    <div class="text-sm">Events</div>
-                                </div>
-                            </div>
+                    <img src="http://static.photos/workspace/1024x576/1" alt="Powerhouse coworking space" class="w-full h-auto rounded-lg">
+                    <div class="mt-4 p-4 bg-primary text-white rounded-lg">
+                    <h4 class="font-heading font-bold text-xl mb-2">Why Powerhouse</h4>
+                    <div class="grid grid-cols-3 gap-4 text-center">
+                        <div>
+                        <div class="text-3xl font-bold">24/7</div>
+                        <div class="text-sm">Access</div>
                         </div>
+                        <div>
+                            <div class="text-3xl font-bold">100%</div>
+                            <div class="text-sm">Local</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold">2025</div>
+                            <div class="text-sm">Opening</div>
+                        </div>
+                    </div>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -447,21 +462,27 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
 
         <!-- CASUAL -->
-        <div class="membership-card bg-white bg-opacity-10 rounded-xl p-6 shadow-lg transition duration-300">
+        <div class="membership-card bg-white bg-opacity-10 rounded-xl p-6 shadow-lg transition duration-300 flex flex-col h-full">
             <div class="text-center mb-6">
-            <div class="bg-white bg-opacity-20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i data-feather="users" class="text-white w-6 h-6"></i>
-            </div>
+                <div class="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center mx-auto mb-8 text-white shrink-0">
+                <svg class="w-full h-full block" viewBox="0 0 168.33 141.73" aria-hidden="true" fill="currentColor">
+                    <polygon points="151.94 26.28 109.37 26.28 109.37 .02 105.6 .02 105.6 26.28 63.52 26.28 63.52 .02 59.75 .02 59.75 26.28 16.39 26.28 16.39 30.05 151.94 30.05 151.94 26.28"/>
+                    <path d="M65.7,86.88v-6.74h-4.57v-19.27h-31.04v19.27h-4.57v6.74H0v3.77h168.33v-3.77h-102.64ZM33.85,64.64h23.50v15.50h-23.50v-15.50ZM29.28,83.91h32.65v2.97H29.28v-2.97Z"/>
+                    <path d="M29.59,101.27l-2.79,40.19,3.76.26.48-6.95h29.13l.48,6.95,3.76-.26-2.79-40.19H29.59ZM58.10,105.04l1.07,15.45h-27.14l1.07-15.45h25ZM31.30,131l.47-6.74h27.67l.47,6.74h-28.60Z"/>
+                    <path d="M106.72,101.27l-2.79,40.19,3.76.26.48-6.95h29.13l.48,6.95,3.76-.26-2.79-40.19h-32.03ZM135.23,105.04l1.07,15.45h-27.14l1.07-15.45h25ZM108.43,131l.47-6.74h27.67l.47,6.74h-28.60Z"/>
+                </svg>
+                </div>
+
             <h3 class="text-xl font-heading font-bold text-white">Casual Member</h3>
 
             <!-- Plan switcher -->
             <div class="mt-4 inline-flex rounded-full bg-white/10 p-1">
                 <button class="plan-pill px-3 py-1 rounded-full text-sm font-semibold bg-white text-primary"
-                        data-target="casual" data-label="2–3 Days / Week" data-price="275" aria-pressed="true">
-                2–3 Days / Week
+                        data-target="casual" data-label="Flex 3" data-price="349" aria-pressed="true">
+                3 Days / Week
                 </button>
                 <button class="plan-pill px-3 py-1 rounded-full text-sm font-semibold text-white"
-                        data-target="casual" data-label="5 Days / Week" data-price="349">
+                        data-target="casual" data-label="Full Access" data-price="475">
                 5 Days / Week
                 </button>
             </div>
@@ -469,11 +490,11 @@
             <!-- Price + badge -->
             <div class="mt-4">
                 <div class="text-3xl font-bold my-1 text-white">
-                $<span id="casual-price">275</span><span class="text-lg font-normal text-white">/mo</span>
+                $<span id="casual-price">349</span><span class="text-lg font-normal text-white">/mo</span>
                 </div>
                 <div id="casual-badge" class="text-xs inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15">
                 <span class="inline-block w-2 h-2 rounded-full bg-amber-300"></span>
-                <span id="casual-label" class="text-white/90">2–3 Days / Week</span>
+                <span id="casual-label" class="text-white/90">Flex 3</span>
                 </div>
             </div>
 
@@ -488,25 +509,33 @@
             <li class="flex items-start"><i data-feather="calendar" class="text-primary w-4 h-4 mr-2 mt-1"></i><span class="text-white">Meeting rooms: included hours lower; extra at member rates</span></li>
             </ul>
 
-            <a href="#contact" class="w-full inline-block text-center btn-primary text-white py-3 rounded-lg hover:bg-opacity-90 transition">Book a Tour</a>
+            <a href="#contact"
+                class="mt-auto w-full inline-block text-center btn-primary text-white py-3 rounded-lg hover:bg-opacity-90 transition">
+                Book a Tour
+            </a>
         </div>
 
         <!-- DEDICATED DESK -->
-        <div class="membership-card bg-white bg-opacity-10 rounded-xl p-6 shadow-lg transition duration-300">
+        <div class="membership-card bg-white bg-opacity-10 rounded-xl p-6 shadow-lg transition duration-300 flex flex-col h-full">
             <div class="text-center mb-6">
-            <div class="bg-white bg-opacity-20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i data-feather="home" class="text-white w-6 h-6"></i>
+            <div class="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center mx-auto mb-8 text-white shrink-0">
+            <svg class="w-full h-full block" viewBox="0 0 135.55 141.73" aria-hidden="true" fill="currentColor">
+                <path d="M96.56,141.24h29.98v-45.55h-29.98v45.55ZM100.33,137.47v-18.73h22.45v18.73h-22.45ZM100.33,114.97v-5.9h22.45v5.9h-22.45ZM122.77,99.46v5.84h-22.45v-5.84h22.45Z"/>
+                <path d="M83.94,67.49h-31.55v19.45H0v54.71h3.77v-50.94h48.62v10.62h-7.53v13.17h21.42v16.84l-12.55,3.77,1.09,3.61,11.46-3.45v6.37h3.77v-6.37l11.46,3.45,1.09-3.61-12.55-3.77v-16.84h21.42v-13.17h-7.53v-10.62h47.67v50.94h3.77v-54.71h-51.44v-19.45ZM52.39,110.73h-3.76v-5.63h3.76v5.63ZM87.71,105.1v5.63h-3.76v-5.63h3.76ZM80.17,110.73h-24.01v-39.47h24.01v39.47Z"/>
+                <polygon points="92.98 26.34 92.98 .08 89.21 .08 89.21 26.34 47.13 26.34 47.13 .08 43.36 .08 43.36 26.34 0 26.34 0 30.11 135.55 30.11 135.55 26.34 92.98 26.34"/>
+            </svg>
             </div>
+
             <h3 class="text-xl font-heading font-bold text-white">Dedicated Desk</h3>
 
             <!-- Plan switcher -->
             <div class="mt-4 inline-flex rounded-full bg-white/10 p-1">
                 <button class="plan-pill px-3 py-1 rounded-full text-sm font-semibold bg-white text-primary"
-                        data-target="desk" data-label="Cave" data-price="649" aria-pressed="true">
-                Cave
+                        data-target="desk" data-label="Ground Floor" data-price="599" aria-pressed="true">
+                Ground Floor
                 </button>
                 <button class="plan-pill px-3 py-1 rounded-full text-sm font-semibold text-white"
-                        data-target="desk" data-label="Premium (Upstairs/Window)" data-price="749">
+                        data-target="desk" data-label="Premium (Upstairs/Window)" data-price="699">
                 Premium
                 </button>
             </div>
@@ -514,11 +543,11 @@
             <!-- Price + badge -->
             <div class="mt-4">
                 <div class="text-3xl font-bold my-1 text-white">
-                $<span id="desk-price">649</span><span class="text-lg font-normal text-white">/mo</span>
+                $<span id="desk-price">599</span><span class="text-lg font-normal text-white">/mo</span>
                 </div>
                 <div id="desk-badge" class="text-xs inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15">
                 <span class="inline-block w-2 h-2 rounded-full bg-emerald-300"></span>
-                <span id="desk-label" class="text-white/90">Cave</span>
+                <span id="desk-label" class="text-white/90">Ground Floor</span>
                 </div>
             </div>
 
@@ -532,15 +561,26 @@
             <li class="flex items-start"><i data-feather="calendar" class="text-primary w-4 h-4 mr-2 mt-1"></i><span class="text-white">More meeting room hours included</span></li>
             </ul>
 
-            <a href="#contact" class="w-full inline-block text-center btn-primary text-white py-3 rounded-lg hover:bg-opacity-90 transition">Book a Tour</a>
+            <a href="#contact"
+                class="mt-auto w-full inline-block text-center btn-primary text-white py-3 rounded-lg hover:bg-opacity-90 transition">
+                Book a Tour
+            </a>
         </div>
 
         <!-- PRIVATE OFFICE -->
-        <div class="membership-card bg-white bg-opacity-10 rounded-xl p-6 shadow-lg transition duration-300">
+        <div class="membership-card bg-white bg-opacity-10 rounded-xl p-6 shadow-lg transition duration-300 flex flex-col h-full">
             <div class="text-center mb-6">
-            <div class="bg-white bg-opacity-20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i data-feather="briefcase" class="text-white w-6 h-6"></i>
-            </div>
+            <div class="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center mx-auto mb-8 text-white shrink-0">
+                <svg class="w-full h-full block" viewBox="0 0 168.26 141.73" aria-hidden="true" fill="currentColor">
+                    <path d="M125.66,86.95v-19.45h-31.55v19.45h-55.02v-19.45H7.54v19.45H0v3.77h7.54v10.62H0v13.17h21.42v16.84l-12.55,3.77,1.09,3.61,11.46-3.45v6.37h3.77v-6.37l11.46,3.45,1.09-3.61-12.55-3.77v-16.84h21.42v-13.17h-7.53v-10.62h55.02v10.62h-7.53v13.17h21.42v16.84l-12.55,3.77,1.09,3.61,11.46-3.45v6.37h3.77v-6.37l11.46,3.45,1.09-3.61-12.55-3.77v-16.84h21.42v-13.17h-7.53v-10.62h42.68v-3.77h-42.68ZM7.54,110.74h-3.76v-5.63h3.76v5.63ZM42.86,105.11v5.63h-3.76v-5.63h3.76ZM35.32,110.74H11.31v-39.47h24.01v39.47ZM94.11,110.74h-3.76v-5.63h3.76v5.63ZM129.42,105.11v5.63h-3.76v-5.63h3.76ZM121.89,110.74h-24.01v-39.47h24.01v39.47Z"/>
+                    <path d="M51.71,141.25h29.98v-45.55h-29.98v45.55ZM55.48,137.48v-18.73h22.45v18.73h-22.45ZM55.48,114.98v-5.9h22.45v5.9h-22.45ZM77.92,99.47v5.84h-22.45v-5.84h22.45Z"/>
+                    <path d="M138.28,141.25h29.98v-45.55h-29.98v45.55ZM142.04,137.48v-18.73h22.45v18.73h-22.45ZM142.04,114.98v-5.9h22.45v5.9h-22.45ZM164.49,99.47v5.84h-22.45v-5.84h22.45Z"/>
+                    <path d="M81.85,26.35h-7.1v-8.87c0-4.44-3.61-8.05-8.05-8.05s-8.05,3.61-8.05,8.05v8.87h-7.1v24.03h30.3v-24.03ZM62.42,17.49c0-2.36,1.92-4.28,4.28-4.28s4.28,1.92,4.28,4.28v8.87h-8.57v-8.87ZM78.08,46.61h-22.76v-16.49h22.76v16.49Z"/>
+                    <rect x="64.82" y="35.55" width="3.77" height="5.43"/>
+                    <path d="M66.7,62.27c17.15,0,31.1-13.95,31.1-31.10S83.85.07,66.7.07s-31.1,13.95-31.1,31.1,13.95,31.1,31.1,31.1ZM66.7,3.84c15.07,0,27.33,12.26,27.33,27.33s-12.26,27.33-27.33,27.33-27.33-12.26-27.33-27.33S51.63,3.84,66.7,3.84Z"/>
+                </svg>
+                </div>
+
             <h3 class="text-xl font-heading font-bold text-white">Private Office</h3>
 
             <!-- Plan switcher -->
@@ -576,11 +616,14 @@
             <li class="flex items-start"><i data-feather="calendar" class="text-primary w-4 h-4 mr-2 mt-1"></i><span class="text-white">*Fair use policy may apply</span></li>
             </ul>
 
-            <a href="#contact" class="w-full inline-block text-center btn-primary text-white py-3 rounded-lg hover:bg-opacity-90 transition">Enquire for Availability</a>
+            <a href="#contact"
+                class="mt-auto w-full inline-block text-center btn-primary text-white py-3 rounded-lg hover:bg-opacity-90 transition">
+                Book a Tour
+            </a>
         </div>
 
         <!-- VIRTUAL OFFICE -->
-        <div class="membership-card bg-white bg-opacity-10 rounded-xl p-6 shadow-lg transition duration-300">
+        <div class="membership-card bg-white bg-opacity-10 rounded-xl p-6 shadow-lg transition duration-300 flex flex-col h-full">
             <div class="text-center mb-6">
             <div class="bg-white bg-opacity-20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <i data-feather="mail" class="text-white w-6 h-6"></i>
@@ -620,14 +663,84 @@
             <li class="flex items-start"><i data-feather="smartphone" class="text-primary w-4 h-4 mr-2 mt-1"></i><span class="text-white">Add day passes as needed</span></li>
             </ul>
 
-            <a href="#contact" class="w-full inline-block text-center btn-primary text-white py-3 rounded-lg hover:bg-opacity-90 transition">Get Started</a>
+            <a href="#contact"
+                class="mt-auto w-full inline-block text-center btn-primary text-white py-3 rounded-lg hover:bg-opacity-90 transition">
+                Book a Tour
+            </a>
         </div>
 
         </div>
+
+        <!-- Parking Add-on (place above Non-member hire) -->
+        <div class="bg-white/10 rounded-xl p-6 md:p-8 shadow-lg mb-8">
+        <h3 class="text-2xl font-heading font-bold text-white mb-4 text-center">Parking Add-On</h3>
+        <p class="text-white/90 text-center max-w-2xl mx-auto mb-6">
+            Add a reserved car park to your membership.
+        </p>
+
+        <div class="membership-card bg-white/5 rounded-xl p-4 md:p-5 max-w-3xl mx-auto">
+            <div class="grid grid-cols-[104px_1fr] gap-4 md:gap-5 items-center">
+                <!-- Left (bigger icon) -->
+                <div class="flex items-center justify-center md:justify-start">
+                <svg class="w-28 h-28 md:w-32 md:h-32 block text-white" viewBox="0 0 156.65 141.73" aria-hidden="true" fill="currentColor">
+                    <path d="M118.73,61.41h-9.7v24.26h3.77v-8.15h5.93c4.44,0,8.05-3.61,8.05-8.05s-3.61-8.05-8.05-8.05ZM118.73,73.74h-5.93v-8.57h5.93c2.36,0,4.28,1.92,4.28,4.28s-1.92,4.28-4.28,4.28Z"/>
+                    <path d="M116.57,50.05c-13.47,0-24.43,10.96-24.43,24.43s10.96,24.43,24.43,24.43,24.43-10.96,24.43-24.43-10.96-24.43-24.43-24.43ZM116.57,95.14c-11.39,0-20.66-9.27-20.66-20.66s9.27-20.66,20.66-20.66,20.66,9.27,20.66,20.66-9.27,20.66-20.66,20.66Z"/>
+                    <polygon points="80.14 0 76.5 0 0 0 0 141.73 3.77 141.73 3.77 3.77 76.37 3.77 76.37 141.73 76.5 141.73 80.14 141.73 80.27 141.73 80.27 3.77 152.88 3.77 152.88 141.73 156.65 141.73 156.65 0 80.14 0"/>
+                    <rect x="87.1" y="12.35" width="58.04" height="3.77"/>
+                    <rect x="10.72" y="12.35" width="58.04" height="3.77"/>
+                    <path d="M64.79,49.88v-29.97H14.7v32.17h-7.41v10.33h7.41v73.65h50.09V62.4h7.41v-10.33h-7.41v-2.19ZM24.95,110.68h29.59l4.47,5.63H20.48l4.47-5.63ZM25.92,106.91v-40.72h27.64v40.72h-27.64ZM54.38,62.42h-29.27l-5.21-8.76h39.69l-5.21,8.76ZM18.47,23.68h42.55v26.21H18.47v-26.21ZM11.06,58.64v-2.79h3.64v2.79h-3.64ZM18.47,58.62l3.69,6.2v43.32l-3.69,4.65v-54.16ZM61.02,132.29H18.47v-12.21h42.55v12.21ZM61.02,112.79l-3.69-4.65v-43.32l3.69-6.2v54.16ZM68.43,55.85v2.79h-3.64v-2.79h3.64Z"/>
+                </svg>
+                </div>
+
+                <!-- Right (compact content) -->
+                <div class="flex flex-col">
+                <h4 class="text-lg md:text-xl font-heading font-bold text-white leading-tight">Reserved Car Park (Add-On)</h4>
+
+                <!-- Price (tight) -->
+                <div class="mt-1">
+                    <div class="text-2xl md:text-3xl font-bold leading-none text-white">
+                    $<span id="parking-reserved-price">217</span><span class="text-sm md:text-base font-normal text-white">/mo</span>
+                    </div>
+                    <div class="mt-1 text-[11px] md:text-xs inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-white/15">
+                    <span class="inline-block w-2 h-2 rounded-full bg-sky-300"></span>
+                    <span class="text-white/90">Reserved bay • 24/7 access</span>
+                    </div>
+                </div>
+
+                <!-- Features (denser, 2 cols on md+) -->
+                <ul class="mt-3 grid grid-cols-1 md:grid-cols-2 gap-y-1.5 md:gap-y-2 gap-x-4 text-sm leading-snug">
+                    <li class="flex items-start">
+                    <svg class="text-primary w-3.5 h-3.5 mr-1.5 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                    <span class="text-white">Allocated bay on Powerhouse property</span>
+                    </li>
+                    <li class="flex items-start">
+                    <svg class="text-primary w-3.5 h-3.5 mr-1.5 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                    <span class="text-white">Secure access</span>
+                    </li>
+                </ul>
+
+                <!-- CTA (smaller, tighter) -->
+                <a href="#contact"
+                    class="mt-3 md:mt-3 w-full md:w-auto inline-block text-center btn-primary text-white px-4 py-2.5 rounded-lg hover:bg-opacity-90 transition">
+                    Enquire for Reserved Parking
+                </a>
+                </div>
+            </div>
+            </div>
+
+
+
+        <!-- Small note about casual options -->
+        <p class="text-white/80 text-xs text-center mt-6">
+            Also available: casual parking on-site via ParkMate (subject to availability), paid on-street parking nearby and free street parking 5 - 10 mins walk.
+        </p>
+        </div>
+        <!-- /Parking Add-on -->
+
 
         <!-- Non-member hire -->
         <div class="bg-white/10 rounded-xl p-6 md:p-8 shadow-lg">
-        <h3 class="text-2xl font-heading font-bold text-white mb-4 text-center">Need a room or the whole space?</h3>
+        <h3 class="text-2xl font-heading font-bold text-white mb-4 text-center">Need a room or an event space?</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="rounded-lg bg-white/5 p-4">
             <div class="flex items-center gap-2 mb-2">
@@ -636,7 +749,7 @@
             </div>
             <p class="text-white/90 mb-2">Available weekdays (subject to availability). Member discounts apply for all memberships.</p>
             <ul class="text-white/90 list-disc ml-5 space-y-1">
-                <li>Hourly + half-day/day rates</li>
+                <li>$45 / hour</li>
                 <li>Screen, camera, fast Wi-Fi, whiteboard</li>
                 <li>Catering on request</li>
             </ul>
@@ -766,13 +879,13 @@
                     <div class="amenity-icon bg-primary bg-opacity-10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
                         <i data-feather="droplet" class="text-primary w-8 h-8"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-primary">Wellness Room</h3>
+                    <h3 class="text-lg font-bold text-primary">Fresh Air Access</h3>
                 </div>
                 <div class="amenity-item text-center">
                     <div class="amenity-icon bg-primary bg-opacity-10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
                         <i data-feather="smile" class="text-primary w-8 h-8"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-primary">Community Events</h3>
+                    <h3 class="text-lg font-bold text-primary">Community</h3>
                 </div>
             </div>
             
@@ -1017,13 +1130,12 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
                 <div>
                     <div class="flex items-center mb-4">
-                        <span class="lightning-icon"></span>
                         <span class="text-2xl font-heading font-bold">Powerhouse</span>
                     </div>
-                    <p class="mb-4">Empowering innovators with flexible workspaces and a thriving community.</p>
+                    <p class="mb-4">A New Shared Space.</p>
                     <div class="flex space-x-4">
                         <a href="#" class="hover:text-primary-light transition"><i data-feather="instagram"></i></a>
-                        <a href="#" class="hover:text-primary-light transition"><i data-feather="twitter"></i></a>
+                        <a href="#" class="hover:text-primary-light transition"><i data-feather="facebook"></i></a>
                         <a href="#" class="hover:text-primary-light transition"><i data-feather="linkedin"></i></a>
                     </div>
                 </div>
@@ -1031,10 +1143,8 @@
                     <h3 class="text-lg font-heading font-bold mb-4">Quick Links</h3>
                     <ul class="space-y-2">
                         <li><a href="#home" class="hover:text-primary-light transition">Home</a></li>
-                        <li><a href="#intro" class="hover:text-primary-light transition">Intro</a></li>
                         <li><a href="#about" class="hover:text-primary-light transition">About</a></li>
                         <li><a href="#memberships" class="hover:text-primary-light transition">Memberships</a></li>
-                        <li><a href="#amenities" class="hover:text-primary-light transition">Amenities</a></li>
                         <li><a href="#contact" class="hover:text-primary-light transition">Contact</a></li>
                     </ul>
                 </div>
@@ -1044,7 +1154,6 @@
                         <li><a href="/blog.html" class="hover:text-primary-light transition">Blog</a></li>
                         <li><a href="/events.html" class="hover:text-primary-light transition">Events</a></li>
                         <li><a href="/gallery.html" class="hover:text-primary-light transition">Gallery</a></li>
-                        <li><a href="#" class="hover:text-primary-light transition">Careers</a></li>
                         <li><a href="#" class="hover:text-primary-light transition">Partnerships</a></li>
                     </ul>
                 </div>
@@ -1288,18 +1397,6 @@
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
 
-        mobileMenuButton.addEventListener('click', () => {
-            const icon = mobileMenuButton.querySelector('svg');
-            if (mobileMenu.classList.contains('hidden')) {
-                mobileMenu.classList.remove('hidden');
-                icon.setAttribute('data-feather', 'x');
-                feather.replace();
-            } else {
-                mobileMenu.classList.add('hidden');
-                icon.setAttribute('data-feather', 'menu');
-                feather.replace();
-            }
-        });
 
         // Testimonial slider
         const testimonialSlider = document.getElementById('testimonial-slider');
@@ -1416,10 +1513,7 @@
                     
                     // Close mobile menu if open
                     if (!mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.add('hidden');
-                        const icon = mobileMenuButton.querySelector('svg');
-                        icon.setAttribute('data-feather', 'menu');
-                        feather.replace();
+                    setMenuOpen(false);
                     }
                 }
             });
@@ -1476,6 +1570,49 @@
             if (labelEl) labelEl.textContent = btn.dataset.label;
             });
         });
+
+        // Helper: open/close mobile menu + swap icon safely
+        function setMenuOpen(open) {
+        if (open) {
+            mobileMenu.classList.remove('hidden');
+            mobileMenuButton.innerHTML = '<i data-feather="x"></i>';
+        } else {
+            mobileMenu.classList.add('hidden');
+            mobileMenuButton.innerHTML = '<i data-feather="menu"></i>';
+        }
+        feather.replace(); // turn <i> into <svg>
+        mobileMenuButton.setAttribute('aria-expanded', String(open));
+        }
+
+        // Hamburger toggle (stop propagation so doc listener doesn't immediately close it)
+        mobileMenuButton.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const open = mobileMenu.classList.contains('hidden');
+        setMenuOpen(open);
+        });
+
+        // Click outside to close
+        document.addEventListener('click', (e) => {
+        const menuOpen = !mobileMenu.classList.contains('hidden');
+        if (!menuOpen) return;
+
+        const clickedInsideMenu = e.target.closest('#mobile-menu');
+        const clickedButton = e.target.closest('#mobile-menu-button');
+        if (!clickedInsideMenu && !clickedButton) setMenuOpen(false);
+        });
+
+        // Close on Esc
+        document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) setMenuOpen(false);
+        });
+
+        // Hide if resizing up to desktop
+        window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768 && !mobileMenu.classList.contains('hidden')) setMenuOpen(false);
+        });
+
+
+
 
 
     </script>
