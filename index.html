@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Powerhouse coworking space - flexible workspaces that fuel innovation and productivity in your city">
     <meta name="keywords" content="Powerhouse coworking, shared office space, coworking space [city], flexible workspace">
+    <link rel="icon" type="image/png" href="/ProfilePicture.png">
     <title>Powerhouse Coworking - Unleash Your Potential</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -211,7 +212,15 @@
             height: auto;
         }
 
+        .feather-hero { width: 5rem; height: 5rem; }
+
+
         @media (min-width: 769px) {
+
+            .feather-hero { width: 6rem; height: 6rem; } }
+            /* Feather keeps classes on replace, so we can style the injected <svg> directly */
+            .feather-hero.feather { stroke-width: 1.6; }
+
             .horizontal-svg {
                 display: contents;
             }
@@ -458,20 +467,59 @@
         Pick the setup that fits how you work. Upgrade or switch anytime.
         </p>
 
+        <!-- === COLLAPSIBLE BASELINE BENEFITS CARD === -->
+        <!-- Place this block just ABOVE the four main membership cards grid -->
+        <details id="baseline-card" class="group bg-white/10 rounded-2xl p-0 shadow-lg mb-10 overflow-hidden">
+        <summary class="list-none select-none cursor-pointer flex items-center justify-between gap-3 px-6 py-4 md:px-8 md:py-5">
+            <div class="flex items-center gap-3 md:gap-4">
+            <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/20 flex items-center justify-center shrink-0" aria-hidden="true">
+                <svg viewBox="0 0 24 24" class="w-5 h-5 md:w-6 md:h-6 text-white" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18"/></svg>
+            </div>
+            <div>
+                <h3 class="text-lg md:text-xl font-heading font-bold text-white leading-tight">Powerhouse Member Perks</h3>
+                <p class="text-white/80 text-sm md:text-base">Included across all workspace plans*</p>
+            </div>
+            </div>
+            <!-- Chevron -->
+            <svg class="w-5 h-5 text-white transition-transform duration-300 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </summary>
+
+        <!-- Collapsible content -->
+        <div class="px-6 pb-6 md:px-8 md:pb-8">
+            <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-2 md:gap-y-3 text-sm md:text-base">
+            <li class="flex items-start"><i data-feather="wifi" class="text-primary w-4 h-4 mr-2 mt-0.5"></i><span class="text-white">Fast, reliable Wi-Fi</span></li>
+            <li class="flex items-start"><i data-feather="coffee" class="text-primary w-4 h-4 mr-2 mt-0.5"></i><span class="text-white">Unlimited tea & coffee</span></li>
+            <li class="flex items-start"><i data-feather="calendar" class="text-primary w-4 h-4 mr-2 mt-0.5"></i><span class="text-white">Bookable meeting rooms (included hours vary by plan)</span></li>
+            <li class="flex items-start"><i data-feather="printer" class="text-primary w-4 h-4 mr-2 mt-0.5"></i><span class="text-white">Printing & scanning</span></li>
+            <li class="flex items-start"><i data-feather="sofa" class="text-primary w-4 h-4 mr-2 mt-0.5"></i><span class="text-white">Lounge & kitchen access</span></li>
+            <li class="flex items-start"><i data-feather="users" class="text-primary w-4 h-4 mr-2 mt-0.5"></i><span class="text-white">Member community & events</span></li>
+            <li class="flex items-start"><i data-feather="check-circle" class="text-primary w-4 h-4 mr-2 mt-0.5"></i><span class="text-white">Cleaning & on-site support</span></li>
+            <li class="flex items-start"><i data-feather="mail" class="text-primary w-4 h-4 mr-2 mt-0.5"></i><span class="text-white">Business address & mail handling <span class="text-white/70">(by plan)</span></span></li>
+            </ul>
+
+            <div class="mt-4 md:mt-5 text-[11px] md:text-xs text-white/70 space-y-1">
+            <p>*Amenities apply to all <span class="font-semibold text-white">workspace</span> memberships.
+                <span class="inline-block px-2 py-0.5 rounded-full bg-white/15 text-white mr-1">Virtual Office</span>
+                is a non-access plan: no building access/shared workspace by default; includes business address and member-rate meeting rooms.
+                Day passes can be added.</p>
+            </div>
+        </div>
+        </details>
+
         <!-- Cards -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
 
         <!-- CASUAL -->
         <div class="membership-card bg-white bg-opacity-10 rounded-xl p-6 shadow-lg transition duration-300 flex flex-col h-full">
             <div class="text-center mb-6">
-                <div class="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center mx-auto mb-8 text-white shrink-0">
+            <div class="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center mx-auto mb-8 text-white shrink-0">
                 <svg class="w-full h-full block" viewBox="0 0 168.33 141.73" aria-hidden="true" fill="currentColor">
-                    <polygon points="151.94 26.28 109.37 26.28 109.37 .02 105.6 .02 105.6 26.28 63.52 26.28 63.52 .02 59.75 .02 59.75 26.28 16.39 26.28 16.39 30.05 151.94 30.05 151.94 26.28"/>
-                    <path d="M65.7,86.88v-6.74h-4.57v-19.27h-31.04v19.27h-4.57v6.74H0v3.77h168.33v-3.77h-102.64ZM33.85,64.64h23.50v15.50h-23.50v-15.50ZM29.28,83.91h32.65v2.97H29.28v-2.97Z"/>
-                    <path d="M29.59,101.27l-2.79,40.19,3.76.26.48-6.95h29.13l.48,6.95,3.76-.26-2.79-40.19H29.59ZM58.10,105.04l1.07,15.45h-27.14l1.07-15.45h25ZM31.30,131l.47-6.74h27.67l.47,6.74h-28.60Z"/>
-                    <path d="M106.72,101.27l-2.79,40.19,3.76.26.48-6.95h29.13l.48,6.95,3.76-.26-2.79-40.19h-32.03ZM135.23,105.04l1.07,15.45h-27.14l1.07-15.45h25ZM108.43,131l.47-6.74h27.67l.47,6.74h-28.60Z"/>
+                <polygon points="151.94 26.28 109.37 26.28 109.37 .02 105.6 .02 105.6 26.28 63.52 26.28 63.52 .02 59.75 .02 59.75 26.28 16.39 26.28 16.39 30.05 151.94 30.05 151.94 26.28"/>
+                <path d="M65.7,86.88v-6.74h-4.57v-19.27h-31.04v19.27h-4.57v6.74H0v3.77h168.33v-3.77h-102.64ZM33.85,64.64h23.50v15.50h-23.50v-15.50ZM29.28,83.91h32.65v2.97H29.28v-2.97Z"/>
+                <path d="M29.59,101.27l-2.79,40.19,3.76.26.48-6.95h29.13l.48,6.95,3.76-.26-2.79-40.19H29.59ZM58.10,105.04l1.07,15.45h-27.14l1.07-15.45h25ZM31.30,131l.47-6.74h27.67l.47,6.74h-28.60Z"/>
+                <path d="M106.72,101.27l-2.79,40.19,3.76.26.48-6.95h29.13l.48,6.95,3.76-.26-2.79-40.19h-32.03ZM135.23,105.04l1.07,15.45h-27.14l1.07-15.45h25ZM108.43,131l.47-6.74h27.67l.47,6.74h-28.60Z"/>
                 </svg>
-                </div>
+            </div>
 
             <h3 class="text-xl font-heading font-bold text-white">Casual Member</h3>
 
@@ -479,11 +527,11 @@
             <div class="mt-4 inline-flex rounded-full bg-white/10 p-1">
                 <button class="plan-pill px-3 py-1 rounded-full text-sm font-semibold bg-white text-primary"
                         data-target="casual" data-label="Flex 3" data-price="349" aria-pressed="true">
-                3 Days / Week
+                3 Days
                 </button>
                 <button class="plan-pill px-3 py-1 rounded-full text-sm font-semibold text-white"
-                        data-target="casual" data-label="Full Access" data-price="475">
-                5 Days / Week
+                        data-target="casual" data-label="Full 5" data-price="475">
+                5 Days
                 </button>
             </div>
 
@@ -501,17 +549,14 @@
             <div class="text-xs mt-2 text-white/80">Access: Mon–Fri, 8:30am–5:00pm</div>
             </div>
 
+            <!-- Lean bullets -->
             <ul class="space-y-3 mb-6">
-            <li class="flex items-start"><i data-feather="check" class="text-primary w-4 h-4 mr-2 mt-1"></i><span class="text-white">Shared workspace access</span></li>
-            <li class="flex items-start"><i data-feather="check" class="text-primary w-4 h-4 mr-2 mt-1"></i><span class="text-white">High-speed Wi-Fi</span></li>
-            <li class="flex items-start"><i data-feather="check" class="text-primary w-4 h-4 mr-2 mt-1"></i><span class="text-white">Tea & coffee included</span></li>
-            <li class="flex items-start"><i data-feather="check" class="text-primary w-4 h-4 mr-2 mt-1"></i><span class="text-white">Community events</span></li>
-            <li class="flex items-start"><i data-feather="calendar" class="text-primary w-4 h-4 mr-2 mt-1"></i><span class="text-white">Meeting rooms: included hours lower; extra at member rates</span></li>
+            <li class="flex items-start"><i data-feather="zap" class="text-primary w-4 h-4 mr-2 mt-1"></i><span class="text-white">Hot desk in shared workspace</span></li>
+            <li class="flex items-start"><i data-feather="calendar" class="text-primary w-4 h-4 mr-2 mt-1"></i><span class="text-white">Meeting rooms: limited included hours; more at member rates</span></li>
             </ul>
 
-            <a href="#contact"
-                class="mt-auto w-full inline-block text-center btn-primary text-white py-3 rounded-lg hover:bg-opacity-90 transition">
-                Book a Tour
+            <a href="#contact" class="mt-auto w-full inline-block text-center btn-primary text-white py-3 rounded-lg hover:bg-opacity-90 transition">
+            Book a Tour
             </a>
         </div>
 
@@ -519,11 +564,11 @@
         <div class="membership-card bg-white bg-opacity-10 rounded-xl p-6 shadow-lg transition duration-300 flex flex-col h-full">
             <div class="text-center mb-6">
             <div class="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center mx-auto mb-8 text-white shrink-0">
-            <svg class="w-full h-full block" viewBox="0 0 135.55 141.73" aria-hidden="true" fill="currentColor">
+                <svg class="w-full h-full block" viewBox="0 0 135.55 141.73" aria-hidden="true" fill="currentColor">
                 <path d="M96.56,141.24h29.98v-45.55h-29.98v45.55ZM100.33,137.47v-18.73h22.45v18.73h-22.45ZM100.33,114.97v-5.9h22.45v5.9h-22.45ZM122.77,99.46v5.84h-22.45v-5.84h22.45Z"/>
                 <path d="M83.94,67.49h-31.55v19.45H0v54.71h3.77v-50.94h48.62v10.62h-7.53v13.17h21.42v16.84l-12.55,3.77,1.09,3.61,11.46-3.45v6.37h3.77v-6.37l11.46,3.45,1.09-3.61-12.55-3.77v-16.84h21.42v-13.17h-7.53v-10.62h47.67v50.94h3.77v-54.71h-51.44v-19.45ZM52.39,110.73h-3.76v-5.63h3.76v5.63ZM87.71,105.1v5.63h-3.76v-5.63h3.76ZM80.17,110.73h-24.01v-39.47h24.01v39.47Z"/>
                 <polygon points="92.98 26.34 92.98 .08 89.21 .08 89.21 26.34 47.13 26.34 47.13 .08 43.36 .08 43.36 26.34 0 26.34 0 30.11 135.55 30.11 135.55 26.34 92.98 26.34"/>
-            </svg>
+                </svg>
             </div>
 
             <h3 class="text-xl font-heading font-bold text-white">Dedicated Desk</h3>
@@ -531,8 +576,8 @@
             <!-- Plan switcher -->
             <div class="mt-4 inline-flex rounded-full bg-white/10 p-1">
                 <button class="plan-pill px-3 py-1 rounded-full text-sm font-semibold bg-white text-primary"
-                        data-target="desk" data-label="Ground Floor" data-price="599" aria-pressed="true">
-                Ground Floor
+                        data-target="desk" data-label="Standard (Ground Floor)" data-price="599" aria-pressed="true">
+                Standard
                 </button>
                 <button class="plan-pill px-3 py-1 rounded-full text-sm font-semibold text-white"
                         data-target="desk" data-label="Premium (Upstairs/Window)" data-price="699">
@@ -547,87 +592,90 @@
                 </div>
                 <div id="desk-badge" class="text-xs inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15">
                 <span class="inline-block w-2 h-2 rounded-full bg-emerald-300"></span>
-                <span id="desk-label" class="text-white/90">Ground Floor</span>
+                <span id="desk-label" class="text-white/90">Standard (Ground Floor)</span>
                 </div>
             </div>
 
             <div class="text-xs mt-2 text-white/80">Access: 24/7 building access</div>
             </div>
 
+            <!-- Lean bullets -->
             <ul class="space-y-3 mb-6">
-            <li class="flex items-start"><i data-feather="monitor" class="text-primary w-4 h-4 mr-2 mt-1"></i><span class="text-white">Personal sit-stand desk + lockable storage</span></li>
-            <li class="flex items-start"><i data-feather="check" class="text-primary w-4 h-4 mr-2 mt-1"></i><span class="text-white">All Casual benefits</span></li>
-            <li class="flex items-start"><i data-feather="printer" class="text-primary w-4 h-4 mr-2 mt-1"></i><span class="text-white">Printing included (e.g., 100 pages)</span></li>
+            <li class="flex items-start"><i data-feather="monitor" class="text-primary w-4 h-4 mr-2 mt-1"></i><span class="text-white">Your own sit-stand desk + lockable storage</span></li>
             <li class="flex items-start"><i data-feather="calendar" class="text-primary w-4 h-4 mr-2 mt-1"></i><span class="text-white">More meeting room hours included</span></li>
+            <li class="flex items-start"><i data-feather="printer" class="text-primary w-4 h-4 mr-2 mt-1"></i><span class="text-white">Printing bundle included</span></li>
             </ul>
 
-            <a href="#contact"
-                class="mt-auto w-full inline-block text-center btn-primary text-white py-3 rounded-lg hover:bg-opacity-90 transition">
-                Book a Tour
+            <a href="#contact" class="mt-auto w-full inline-block text-center btn-primary text-white py-3 rounded-lg hover:bg-opacity-90 transition">
+            Book a Tour
             </a>
         </div>
 
         <!-- PRIVATE OFFICE -->
-        <div class="membership-card bg-white bg-opacity-10 rounded-xl p-6 shadow-lg transition duration-300 flex flex-col h-full">
+        <div class="membership-card bg-white bg-opacity-10 rounded-xl p-6 shadow-lg transition duration-300 flex flex-col h-full" id="private-office-card">
             <div class="text-center mb-6">
-            <div class="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center mx-auto mb-8 text-white shrink-0">
-                <svg class="w-full h-full block" viewBox="0 0 168.26 141.73" aria-hidden="true" fill="currentColor">
-                    <path d="M125.66,86.95v-19.45h-31.55v19.45h-55.02v-19.45H7.54v19.45H0v3.77h7.54v10.62H0v13.17h21.42v16.84l-12.55,3.77,1.09,3.61,11.46-3.45v6.37h3.77v-6.37l11.46,3.45,1.09-3.61-12.55-3.77v-16.84h21.42v-13.17h-7.53v-10.62h55.02v10.62h-7.53v13.17h21.42v16.84l-12.55,3.77,1.09,3.61,11.46-3.45v6.37h3.77v-6.37l11.46,3.45,1.09-3.61-12.55-3.77v-16.84h21.42v-13.17h-7.53v-10.62h42.68v-3.77h-42.68ZM7.54,110.74h-3.76v-5.63h3.76v5.63ZM42.86,105.11v5.63h-3.76v-5.63h3.76ZM35.32,110.74H11.31v-39.47h24.01v39.47ZM94.11,110.74h-3.76v-5.63h3.76v5.63ZM129.42,105.11v5.63h-3.76v-5.63h3.76ZM121.89,110.74h-24.01v-39.47h24.01v39.47Z"/>
-                    <path d="M51.71,141.25h29.98v-45.55h-29.98v45.55ZM55.48,137.48v-18.73h22.45v18.73h-22.45ZM55.48,114.98v-5.9h22.45v5.9h-22.45ZM77.92,99.47v5.84h-22.45v-5.84h22.45Z"/>
-                    <path d="M138.28,141.25h29.98v-45.55h-29.98v45.55ZM142.04,137.48v-18.73h22.45v18.73h-22.45ZM142.04,114.98v-5.9h22.45v5.9h-22.45ZM164.49,99.47v5.84h-22.45v-5.84h22.45Z"/>
-                    <path d="M81.85,26.35h-7.1v-8.87c0-4.44-3.61-8.05-8.05-8.05s-8.05,3.61-8.05,8.05v8.87h-7.1v24.03h30.3v-24.03ZM62.42,17.49c0-2.36,1.92-4.28,4.28-4.28s4.28,1.92,4.28,4.28v8.87h-8.57v-8.87ZM78.08,46.61h-22.76v-16.49h22.76v16.49Z"/>
-                    <rect x="64.82" y="35.55" width="3.77" height="5.43"/>
-                    <path d="M66.7,62.27c17.15,0,31.1-13.95,31.1-31.10S83.85.07,66.7.07s-31.1,13.95-31.1,31.1,13.95,31.1,31.1,31.1ZM66.7,3.84c15.07,0,27.33,12.26,27.33,27.33s-12.26,27.33-27.33,27.33-27.33-12.26-27.33-27.33S51.63,3.84,66.7,3.84Z"/>
+            <div class="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center mx-auto mb-8 text-white shrink-0" aria-hidden="true">
+                <svg class="w-full h-full block" viewBox="0 0 168.26 141.73" fill="currentColor">
+                <path d="M125.66,86.95v-19.45h-31.55v19.45h-55.02v-19.45H7.54v19.45H0v3.77h7.54v10.62H0v13.17h21.42v16.84l-12.55,3.77,1.09,3.61,11.46-3.45v6.37h3.77v-6.37l11.46,3.45,1.09-3.61-12.55-3.77v-16.84h21.42v-13.17h-7.53v-10.62h55.02v10.62h-7.53v13.17h21.42v16.84l-12.55,3.77,1.09,3.61,11.46-3.45v6.37h3.77v-6.37l11.46,3.45,1.09-3.61-12.55-3.77v-16.84h21.42v-13.17h-7.53v-10.62h42.68v-3.77h-42.68ZM7.54,110.74h-3.76v-5.63h3.76v5.63ZM42.86,105.11v5.63h-3.76v-5.63h3.76ZM35.32,110.74H11.31v-39.47h24.01v39.47ZM94.11,110.74h-3.76v-5.63h3.76v5.63ZM129.42,105.11v5.63h-3.76v-5.63h3.76ZM121.89,110.74h-24.01v-39.47h24.01v39.47Z"/>
+                <path d="M51.71,141.25h29.98v-45.55h-29.98v45.55ZM55.48,137.48v-18.73h22.45v18.73h-22.45ZM55.48,114.98v-5.9h22.45v5.9h-22.45ZM77.92,99.47v5.84h-22.45v-5.84h22.45Z"/>
+                <path d="M138.28,141.25h29.98v-45.55h-29.98v45.55ZM142.04,137.48v-18.73h22.45v18.73h-22.45ZM142.04,114.98v-5.9h22.45v5.9h-22.45ZM164.49,99.47v5.84h-22.45v-5.84h22.45Z"/>
+                <path d="M81.85,26.35h-7.1v-8.87c0-4.44-3.61-8.05-8.05-8.05s-8.05,3.61-8.05,8.05v8.87h-7.1v24.03h30.3v-24.03ZM62.42,17.49c0-2.36,1.92-4.28,4.28-4.28s4.28,1.92,4.28,4.28v8.87h-8.57v-8.87ZM78.08,46.61h-22.76v-16.49h22.76v16.49Z"/>
+                <rect x="64.82" y="35.55" width="3.77" height="5.43"/>
+                <path d="M66.7,62.27c17.15,0,31.1-13.95,31.1-31.10S83.85.07,66.7.07s-31.1,13.95-31.1,31.1,13.95,31.1,31.1,31.1ZM66.7,3.84c15.07,0,27.33,12.26,27.33,27.33s-12.26,27.33-27.33,27.33-27.33-12.26-27.33-27.33S51.63,3.84,66.7,3.84Z"/>
                 </svg>
-                </div>
+            </div>
 
             <h3 class="text-xl font-heading font-bold text-white">Private Office</h3>
 
             <!-- Plan switcher -->
-            <div class="mt-4 inline-flex rounded-full bg-white/10 p-1">
-                <button class="plan-pill px-3 py-1 rounded-full text-sm font-semibold bg-white text-primary"
-                        data-target="office" data-label="Internal" data-price="1490" aria-pressed="true">
-                Internal
+            <div class="mt-4 inline-flex rounded-full bg-white/10 p-1" role="tablist" aria-label="Private office tier switcher">
+                <button class="plan-pill px-3 py-1 rounded-full text-sm font-semibold bg-white text-primary outline-none focus:ring-2 focus:ring-white/60"
+                        data-target="office" data-label="Internal Office" data-price="1350" data-capacity="1–2"
+                        data-features="Private & lockable;Quiet focus space;Includes 2 sit-stand workstations"
+                        aria-pressed="true" role="tab">
+                Standard
                 </button>
-                <button class="plan-pill px-3 py-1 rounded-full text-sm font-semibold text-white"
-                        data-target="office" data-label="External / Larger" data-price="1790">
-                External / Larger
+                <button class="plan-pill px-3 py-1 rounded-full text-sm font-semibold text-white outline-none focus:ring-2 focus:ring-white/60"
+                        data-target="office" data-label="Room with a View" data-price="1650" data-capacity="1–3"
+                        data-features="Windows & natural light;Extra space;Best location"
+                        role="tab" aria-pressed="false">
+                Premium
                 </button>
             </div>
 
             <!-- Price + badge -->
             <div class="mt-4">
                 <div class="text-3xl font-bold my-1 text-white">
-                $<span id="office-price">1490</span><span class="text-lg font-normal text-white">/mo</span>
+                $<span id="office-price">1350</span><span class="text-lg font-normal text-white">/mo</span>
                 </div>
                 <div id="office-badge" class="text-xs inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15">
                 <span class="inline-block w-2 h-2 rounded-full bg-sky-300"></span>
-                <span id="office-label" class="text-white/90">Internal</span>
+                <span id="office-label" class="text-white/90">Internal Office</span>
                 </div>
+                <div class="text-xs mt-2 text-white/80">Includes <span id="office-capacity">1–2</span> people • +$399/mo per additional person*</div>
+                <div class="text-[11px] mt-1 text-white/60">*Capacity limits apply for comfort and fire code.</div>
+            </div>
             </div>
 
-            <div class="text-xs mt-2 text-white/80">Access: 24/7 • Unrestricted meeting room hours*</div>
-            </div>
-
-            <ul class="space-y-3 mb-6">
-            <li class="flex items-start"><i data-feather="users" class="text-primary w-4 h-4 mr-2 mt-1"></i><span class="text-white">Your own enclosed office (2 sit-stand workstations)</span></li>
-            <li class="flex items-start"><i data-feather="check" class="text-primary w-4 h-4 mr-2 mt-1"></i><span class="text-white">Everything in Dedicated Desk</span></li>
-            <li class="flex items-start"><i data-feather="lock" class="text-primary w-4 h-4 mr-2 mt-1"></i><span class="text-white">Lockable, furnished, ready to go</span></li>
-            <li class="flex items-start"><i data-feather="calendar" class="text-primary w-4 h-4 mr-2 mt-1"></i><span class="text-white">*Fair use policy may apply</span></li>
+            <!-- Lean bullets (kept concise) -->
+            <ul class="space-y-3 mb-6" id="office-features">
+            <li class="flex items-start"><i data-feather="lock" class="text-primary w-4 h-4 mr-2 mt-1"></i><span class="text-white">Private, lockable office (2 sit-stand workstations)</span></li>
+            <li class="flex items-start"><i data-feather="maximize" class="text-primary w-4 h-4 mr-2 mt-1"></i><span class="text-white">Extra space and storage</span></li>
+            <li class="flex items-start"><i data-feather="calendar" class="text-primary w-4 h-4 mr-2 mt-1"></i><span class="text-white">Unrestricted* meeting rooms (Fair Use)</span></li>
             </ul>
 
-            <a href="#contact"
-                class="mt-auto w-full inline-block text-center btn-primary text-white py-3 rounded-lg hover:bg-opacity-90 transition">
-                Book a Tour
+            <a href="#contact" class="mt-auto w-full inline-block text-center btn-primary text-white py-3 rounded-lg hover:bg-opacity-90 transition">
+            Book a Tour
             </a>
         </div>
 
         <!-- VIRTUAL OFFICE -->
         <div class="membership-card bg-white bg-opacity-10 rounded-xl p-6 shadow-lg transition duration-300 flex flex-col h-full">
             <div class="text-center mb-6">
-            <div class="bg-white bg-opacity-20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i data-feather="mail" class="text-white w-6 h-6"></i>
+            <div class="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center mx-auto mb-8 text-white shrink-0">
+                <i data-feather="mail" class="feather-hero"></i>
             </div>
+
             <h3 class="text-xl font-heading font-bold text-white">Virtual Office</h3>
 
             <!-- (Optional) Plan switcher -->
@@ -656,180 +704,257 @@
             <div class="text-xs mt-2 text-white/80">Business address • Optional mail handling</div>
             </div>
 
+            <!-- Lean bullets -->
             <ul class="space-y-3 mb-6">
             <li class="flex items-start"><i data-feather="map-pin" class="text-primary w-4 h-4 mr-2 mt-1"></i><span class="text-white">Professional business address</span></li>
-            <li class="flex items-start"><i data-feather="inbox" class="text-primary w-4 h-4 mr-2 mt-1"></i><span class="text-white">Mail handling & forwarding (Plus)</span></li>
-            <li class="flex items-start"><i data-feather="calendar" class="text-primary w-4 h-4 mr-2 mt-1"></i><span class="text-white">Member-rate meeting rooms</span></li>
-            <li class="flex items-start"><i data-feather="smartphone" class="text-primary w-4 h-4 mr-2 mt-1"></i><span class="text-white">Add day passes as needed</span></li>
+            <li class="flex items-start"><i data-feather="inbox" class="text-primary w-4 h-4 mr-2 mt-1"></i><span class="text-white">Mail handling (Plus adds scan/forward)</span></li>
+            <li class="flex items-start"><i data-feather="calendar" class="text-primary w-4 h-4 mr-2 mt-1"></i><span class="text-white">Meeting rooms at member rates</span></li>
+            <li class="flex items-start"><i data-feather="smartphone" class="text-primary w-4 h-4 mr-2 mt-1"></i><span class="text-white">Add day passes when needed</span></li>
             </ul>
 
-            <a href="#contact"
-                class="mt-auto w-full inline-block text-center btn-primary text-white py-3 rounded-lg hover:bg-opacity-90 transition">
-                Book a Tour
+            <a href="#contact" class="mt-auto w-full inline-block text-center btn-primary text-white py-3 rounded-lg hover:bg-opacity-90 transition">
+            Book a Tour
             </a>
         </div>
 
-        </div>
+
+        </div> <!-- ✅ closes the 4-card grid correctly -->
 
         <!-- Parking Add-on (place above Non-member hire) -->
         <div class="bg-white/10 rounded-xl p-6 md:p-8 shadow-lg mb-8">
-        <h3 class="text-2xl font-heading font-bold text-white mb-4 text-center">Parking Add-On</h3>
-        <p class="text-white/90 text-center max-w-2xl mx-auto mb-6">
+          <h3 class="text-2xl font-heading font-bold text-white mb-4 text-center">Parking Add-On</h3>
+          <p class="text-white/90 text-center max-w-2xl mx-auto mb-6">
             Add a reserved car park to your membership.
-        </p>
+          </p>
 
-        <div class="membership-card bg-white/5 rounded-xl p-4 md:p-5 max-w-3xl mx-auto">
+          <div class="bg-white/5 rounded-xl p-4 md:p-5 max-w-3xl mx-auto">
             <div class="grid grid-cols-[104px_1fr] gap-4 md:gap-5 items-center">
-                <!-- Left (bigger icon) -->
-                <div class="flex items-center justify-center md:justify-start">
+              <!-- Left (bigger icon) -->
+              <div class="flex items-center justify-center md:justify-start">
                 <svg class="w-28 h-28 md:w-32 md:h-32 block text-white" viewBox="0 0 156.65 141.73" aria-hidden="true" fill="currentColor">
-                    <path d="M118.73,61.41h-9.7v24.26h3.77v-8.15h5.93c4.44,0,8.05-3.61,8.05-8.05s-3.61-8.05-8.05-8.05ZM118.73,73.74h-5.93v-8.57h5.93c2.36,0,4.28,1.92,4.28,4.28s-1.92,4.28-4.28,4.28Z"/>
-                    <path d="M116.57,50.05c-13.47,0-24.43,10.96-24.43,24.43s10.96,24.43,24.43,24.43,24.43-10.96,24.43-24.43-10.96-24.43-24.43-24.43ZM116.57,95.14c-11.39,0-20.66-9.27-20.66-20.66s9.27-20.66,20.66-20.66,20.66,9.27,20.66,20.66-9.27,20.66-20.66,20.66Z"/>
-                    <polygon points="80.14 0 76.5 0 0 0 0 141.73 3.77 141.73 3.77 3.77 76.37 3.77 76.37 141.73 76.5 141.73 80.14 141.73 80.27 141.73 80.27 3.77 152.88 3.77 152.88 141.73 156.65 141.73 156.65 0 80.14 0"/>
-                    <rect x="87.1" y="12.35" width="58.04" height="3.77"/>
-                    <rect x="10.72" y="12.35" width="58.04" height="3.77"/>
-                    <path d="M64.79,49.88v-29.97H14.7v32.17h-7.41v10.33h7.41v73.65h50.09V62.4h7.41v-10.33h-7.41v-2.19ZM24.95,110.68h29.59l4.47,5.63H20.48l4.47-5.63ZM25.92,106.91v-40.72h27.64v40.72h-27.64ZM54.38,62.42h-29.27l-5.21-8.76h39.69l-5.21,8.76ZM18.47,23.68h42.55v26.21H18.47v-26.21ZM11.06,58.64v-2.79h3.64v2.79h-3.64ZM18.47,58.62l3.69,6.2v43.32l-3.69,4.65v-54.16ZM61.02,132.29H18.47v-12.21h42.55v12.21ZM61.02,112.79l-3.69-4.65v-43.32l3.69-6.2v54.16ZM68.43,55.85v2.79h-3.64v-2.79h3.64Z"/>
+                  <path d="M118.73,61.41h-9.7v24.26h3.77v-8.15h5.93c4.44,0,8.05-3.61,8.05-8.05s-3.61-8.05-8.05-8.05ZM118.73,73.74h-5.93v-8.57h5.93c2.36,0,4.28,1.92,4.28,4.28s-1.92,4.28-4.28,4.28Z"/>
+                  <path d="M116.57,50.05c-13.47,0-24.43,10.96-24.43,24.43s10.96,24.43,24.43,24.43,24.43-10.96,24.43-24.43-10.96-24.43-24.43-24.43ZM116.57,95.14c-11.39,0-20.66-9.27-20.66-20.66s9.27-20.66,20.66-20.66,20.66,9.27,20.66,20.66-9.27,20.66-20.66,20.66Z"/>
+                  <polygon points="80.14 0 76.5 0 0 0 0 141.73 3.77 141.73 3.77 3.77 76.37 3.77 76.37 141.73 76.5 141.73 80.14 141.73 80.27 141.73 80.27 3.77 152.88 3.77 152.88 141.73 156.65 141.73 156.65 0 80.14 0"/>
+                  <rect x="87.1" y="12.35" width="58.04" height="3.77"/>
+                  <rect x="10.72" y="12.35" width="58.04" height="3.77"/>
+                  <path d="M64.79,49.88v-29.97H14.7v32.17h-7.41v10.33h7.41v73.65h50.09V62.4h7.41v-10.33h-7.41v-2.19ZM24.95,110.68h29.59l4.47,5.63H20.48l4.47-5.63ZM25.92,106.91v-40.72h27.64v40.72h-27.64ZM54.38,62.42h-29.27l-5.21-8.76h39.69l-5.21,8.76ZM18.47,23.68h42.55v26.21H18.47v-26.21ZM11.06,58.64v-2.79h3.64v2.79h-3.64ZM18.47,58.62l3.69,6.2v43.32l-3.69,4.65v-54.16ZM61.02,132.29H18.47v-12.21h42.55v12.21ZM61.02,112.79l-3.69-4.65v-43.32l3.69-6.2v54.16ZM68.43,55.85v2.79h-3.64v-2.79h3.64Z"/>
                 </svg>
-                </div>
+              </div>
 
-                <!-- Right (compact content) -->
-                <div class="flex flex-col">
+              <!-- Right (compact content) -->
+              <div class="flex flex-col">
                 <h4 class="text-lg md:text-xl font-heading font-bold text-white leading-tight">Reserved Car Park (Add-On)</h4>
 
                 <!-- Price (tight) -->
                 <div class="mt-1">
-                    <div class="text-2xl md:text-3xl font-bold leading-none text-white">
+                  <div class="text-2xl md:text-3xl font-bold leading-none text-white">
                     $<span id="parking-reserved-price">217</span><span class="text-sm md:text-base font-normal text-white">/mo</span>
-                    </div>
-                    <div class="mt-1 text-[11px] md:text-xs inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-white/15">
+                  </div>
+                  <div class="mt-1 text-[11px] md:text-xs inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-white/15">
                     <span class="inline-block w-2 h-2 rounded-full bg-sky-300"></span>
                     <span class="text-white/90">Reserved bay • 24/7 access</span>
-                    </div>
+                  </div>
                 </div>
 
                 <!-- Features (denser, 2 cols on md+) -->
                 <ul class="mt-3 grid grid-cols-1 md:grid-cols-2 gap-y-1.5 md:gap-y-2 gap-x-4 text-sm leading-snug">
-                    <li class="flex items-start">
+                  <li class="flex items-start">
                     <svg class="text-primary w-3.5 h-3.5 mr-1.5 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
                     <span class="text-white">Allocated bay on Powerhouse property</span>
-                    </li>
-                    <li class="flex items-start">
+                  </li>
+                  <li class="flex items-start">
                     <svg class="text-primary w-3.5 h-3.5 mr-1.5 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
                     <span class="text-white">Secure access</span>
-                    </li>
+                  </li>
                 </ul>
 
                 <!-- CTA (smaller, tighter) -->
-                <a href="#contact"
-                    class="mt-3 md:mt-3 w-full md:w-auto inline-block text-center btn-primary text-white px-4 py-2.5 rounded-lg hover:bg-opacity-90 transition">
-                    Enquire for Reserved Parking
+                <a href="#contact" class="mt-3 md:mt-3 w-full md:w-auto inline-block text-center btn-primary text-white px-4 py-2.5 rounded-lg hover:bg-opacity-90 transition">
+                  Enquire for Reserved Parking
                 </a>
-                </div>
+              </div>
             </div>
-            </div>
+          </div>
 
-
-
-        <!-- Small note about casual options -->
-        <p class="text-white/80 text-xs text-center mt-6">
+          <!-- Small note about casual options -->
+          <p class="text-white/80 text-xs text-center mt-6">
             Also available: casual parking on-site via ParkMate (subject to availability), paid on-street parking nearby and free street parking 5 - 10 mins walk.
-        </p>
+          </p>
         </div>
         <!-- /Parking Add-on -->
 
-
         <!-- Non-member hire -->
         <div class="bg-white/10 rounded-xl p-6 md:p-8 shadow-lg">
-        <h3 class="text-2xl font-heading font-bold text-white mb-4 text-center">Need a room or an event space?</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <h3 class="text-2xl font-heading font-bold text-white mb-4 text-center">Need a room or an event space?</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="rounded-lg bg-white/5 p-4">
-            <div class="flex items-center gap-2 mb-2">
+              <div class="flex items-center gap-2 mb-2">
                 <i data-feather="calendar" class="w-5 h-5 text-white"></i>
                 <h4 class="font-bold">Meeting Room Hire (Non-members)</h4>
-            </div>
-            <p class="text-white/90 mb-2">Available weekdays (subject to availability). Member discounts apply for all memberships.</p>
-            <ul class="text-white/90 list-disc ml-5 space-y-1">
+              </div>
+              <p class="text-white/90 mb-2">Available weekdays (subject to availability). Member discounts apply for all memberships.</p>
+              <ul class="text-white/90 list-disc ml-5 space-y-1">
                 <li>$45 / hour</li>
                 <li>Screen, camera, fast Wi-Fi, whiteboard</li>
                 <li>Catering on request</li>
-            </ul>
+              </ul>
             </div>
 
             <div class="rounded-lg bg-white/5 p-4">
-            <div class="flex items-center gap-2 mb-2">
+              <div class="flex items-center gap-2 mb-2">
                 <i data-feather="music" class="w-5 h-5 text-white"></i>
                 <h4 class="font-bold">After-hours & Weekend Events</h4>
-            </div>
-            <p class="text-white/90 mb-2">Host meetups, workshops, or socials in our space.</p>
-            <ul class="text-white/90 list-disc ml-5 space-y-1">
+              </div>
+              <p class="text-white/90 mb-2">Host meetups, workshops, or socials in our space.</p>
+              <ul class="text-white/90 list-disc ml-5 space-y-1">
                 <li>Evenings & weekends</li>
                 <li>AV support available</li>
                 <li>Custom layouts & staffing</li>
-            </ul>
+              </ul>
             </div>
-        </div>
-        <div class="text-center mt-6">
+          </div>
+          <div class="text-center mt-6">
             <a href="#contact" class="inline-block btn-primary text-white px-6 py-3 rounded-full hover:bg-opacity-90 transition">Enquire for Hire</a>
-        </div>
+          </div>
         </div>
 
         <!-- (Optional) updated comparison -->
         <div class="text-center mt-10">
-        <button id="compare-toggle" class="text-white font-bold underline hover:text-primary-light transition">Compare All Options</button>
-        <div id="comparison-table" class="hidden mt-8 bg-white bg-opacity-10 rounded-xl p-6 shadow-lg overflow-x-auto">
+          <button id="compare-toggle" class="text-white font-bold underline hover:text-primary-light transition">Compare All Options</button>
+          <div id="comparison-table" class="hidden mt-8 bg-white bg-opacity-10 rounded-xl p-6 shadow-lg overflow-x-auto">
             <table class="w-full min-w-[720px]">
-            <thead>
+              <thead>
                 <tr class="border-b border-gray-300">
-                <th class="text-left py-3 text-white">Feature</th>
-                <th class="py-3 text-white">Casual</th>
-                <th class="py-3 text-white">Dedicated Desk</th>
-                <th class="py-3 text-white">Private Office</th>
-                <th class="py-3 text-white">Virtual Office</th>
+                  <th class="text-left py-3 text-white">Feature</th>
+                  <th class="py-3 text-white">Casual - Flex 3</th>
+                  <th class="py-3 text-white">Casual - Full 5</th>
+                  <th class="py-3 text-white">Dedicated Desk</th>
+                  <th class="py-3 text-white">Private Office</th>
+                  <th class="py-3 text-white">Virtual Office</th>
                 </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-300">
+              </thead>
+              <tbody class="divide-y divide-gray-300">
                 <tr>
-                <td class="text-left py-3 text-white">Access</td>
-                <td class="text-center text-white">Mon–Fri 8:30–17:00</td>
-                <td class="text-center text-white">24/7</td>
-                <td class="text-center text-white">24/7</td>
-                <td class="text-center text-white">N/A</td>
-                </tr>
-                <tr>
-                <td class="text-left py-3 text-white">Own Desk/Office</td>
-                <td class="text-center text-white">Shared</td>
-                <td class="text-center text-white">Dedicated desk</td>
-                <td class="text-center text-white">Private office</td>
-                <td class="text-center text-white">No</td>
+                  <td class="text-left py-3 text-white">Access</td>
+                  <td class="text-center text-white">Mon–Fri 8:30am – 5:00pm</td>
+                  <td class="text-center text-white">Mon–Fri 8:30am – 5:00pm</td>
+                  <td class="text-center text-white">24/7</td>
+                  <td class="text-center text-white">24/7</td>
+                  <td class="text-center text-white">N/A</td>
                 </tr>
                 <tr>
-                <td class="text-left py-3 text-white">Meeting Rooms (incl.)</td>
-                <td class="text-center text-white">Lower</td>
-                <td class="text-center text-white">More</td>
-                <td class="text-center text-white">Unrestricted* (Fair Use)</td>
-                <td class="text-center text-white">Member rates</td>
+                  <td class="text-left py-3 text-white">Own Desk/Office</td>
+                  <td class="text-center text-white">Shared</td>
+                  <td class="text-center text-white">Shared</td>
+                  <td class="text-center text-white">Dedicated desk</td>
+                  <td class="text-center text-white">Private office</td>
+                  <td class="text-center text-white">Nope</td>
                 </tr>
                 <tr>
-                <td class="text-left py-3 text-white">Mail Handling</td>
-                <td class="text-center text-white">—</td>
-                <td class="text-center text-white">—</td>
-                <td class="text-center text-white">—</td>
-                <td class="text-center text-white">Optional</td>
+                  <td class="text-left py-3 text-white">Meeting Rooms (incl.)</td>
+                  <td class="text-center text-white">4 hours/mo</td>
+                  <td class="text-center text-white">8 hours/mo</td>
+                  <td class="text-center text-white">Unrestricted*</td>
+                  <td class="text-center text-white">Unrestricted*</td>
+                  <td class="text-center text-white">Member rates</td>
                 </tr>
                 <tr>
-                <td class="text-left py-3 text-white">Tea/Coffee</td>
-                <td class="text-center text-white">Yes</td>
-                <td class="text-center text-white">Yes</td>
-                <td class="text-center text-white">Yes</td>
-                <td class="text-center text-white">—</td>
+                  <td class="text-left py-3 text-white">Mail Handling</td>
+                  <td class="text-center text-white">Yep</td>
+                  <td class="text-center text-white">Yep</td>
+                  <td class="text-center text-white">Yep</td>
+                  <td class="text-center text-white">Yep</td>
+                  <td class="text-center text-white">Yep</td>
                 </tr>
-            </tbody>
+                <tr>
+                  <td class="text-left py-3 text-white">Tea/Coffee</td>
+                  <td class="text-center text-white">Yep</td>
+                  <td class="text-center text-white">Yep</td>
+                  <td class="text-center text-white">Yep</td>
+                  <td class="text-center text-white">Yep</td>
+                  <td class="text-center text-white">N/A</td>
+                </tr>
+              </tbody>
             </table>
             <p class="text-xs text-white/70 mt-3">*Unrestricted = reasonable fair-use policy applies.</p>
+          </div>
         </div>
+
         </div>
     </div>
     </section>
+
+    <!-- Toggle logic for plan pills + baseline auto-open + compare table -->
+    <script>
+    (function () {
+        // Baseline card: open on >= md, collapsed on mobile
+        const d = document.getElementById('baseline-card');
+        if(d) d.open = false;
+
+        // Plan toggles
+        const pills = document.querySelectorAll('.plan-pill');
+        const cfg = {
+        casual:    { priceEl: '#casual-price',  labelEl: '#casual-label' },
+        desk:      { priceEl: '#desk-price',    labelEl: '#desk-label'   },
+        virtual:   { priceEl: '#virtual-price', labelEl: '#virtual-label'},
+        office:    { priceEl: '#office-price',  labelEl: '#office-label', capEl: '#office-capacity', featuresEl: '#office-features' }
+        };
+
+        const renderOfficeFeatures = (featuresStr) => {
+        const el = document.querySelector(cfg.office.featuresEl);
+        if (!el) return;
+        // featuresStr like "Windows & natural light;Extra space;Best location"
+        const items = (featuresStr || '').split(';').map(s => s.trim()).filter(Boolean);
+        // icons heuristic
+        const icons = { 'Windows': 'sun', 'Extra': 'maximize', 'Private': 'lock', 'Quiet': 'volume-x', 'Best': 'star', 'Includes': 'check' };
+        el.innerHTML = items.map(text => {
+            let icon = 'check';
+            for (const key in icons) { if (text.startsWith(key)) { icon = icons[key]; break; } }
+            return `
+            <li class="flex items-start">
+                <i data-feather="${icon}" class="text-primary w-4 h-4 mr-2 mt-1"></i>
+                <span class="text-white">${text}</span>
+            </li>`;
+        }).join('');
+        if (window.feather) window.feather.replace();
+        };
+
+        pills.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-target');
+            const group = document.querySelectorAll('.plan-pill[data-target="' + target + '"]');
+            group.forEach(b => {
+            b.classList.remove('bg-white','text-primary');
+            b.classList.add('text-white');
+            b.setAttribute('aria-pressed','false');
+            });
+            btn.classList.add('bg-white','text-primary');
+            btn.classList.remove('text-white');
+            btn.setAttribute('aria-pressed','true');
+
+            const price = btn.getAttribute('data-price');
+            const label = btn.getAttribute('data-label');
+
+            const priceEl = document.querySelector(cfg[target].priceEl);
+            const labelEl = document.querySelector(cfg[target].labelEl);
+            if (priceEl) priceEl.textContent = price || '';
+            if (labelEl) labelEl.textContent = label || '';
+
+            if (target === 'office') {
+            const cap = btn.getAttribute('data-capacity') || '';
+            const feats = btn.getAttribute('data-features') || '';
+            const capEl = document.querySelector(cfg.office.capEl);
+            if (capEl) capEl.textContent = cap;
+            renderOfficeFeatures(feats);
+            }
+        });
+        });
+
+        // Feather icons refresh
+        if (window.feather) window.feather.replace();
+    })();
+    </script>
+
 
 
     <!-- Amenities Section -->
@@ -879,7 +1004,7 @@
                     <div class="amenity-icon bg-primary bg-opacity-10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
                         <i data-feather="droplet" class="text-primary w-8 h-8"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-primary">Fresh Air Access</h3>
+                    <h3 class="text-lg font-bold text-primary">Outdoor Seating</h3>
                 </div>
                 <div class="amenity-item text-center">
                     <div class="amenity-icon bg-primary bg-opacity-10 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4 shadow-md">
@@ -1040,37 +1165,49 @@
                     </div>
                     
                     <div class="bg-primary bg-opacity-10 rounded-xl p-6">
-                        <h3 class="text-2xl font-heading font-bold mb-4">Frequently Asked Questions</h3>
+                        <h3 class="text-2xl font-heading font-bold mb-4 text-black">Frequently Asked Questions</h3>
                         <div class="space-y-4">
-                            <div class="border-b border-white border-opacity-20 pb-4">
-                                <button class="faq-toggle w-full flex justify-between items-center text-left">
-                                    <span class="font-bold text-white">What are your hours of operation?</span>
-                                    <i data-feather="chevron-down" class="w-5 h-5 transform transition-transform text-white"></i>
-                                </button>
-                                <div class="faq-content hidden mt-2">
-                                    <p class="text-white">Our space is open 24/7 for all members. Our staffed hours are Monday-Friday from 8:00 AM to 6:00 PM.</p>
-                                </div>
+                            <div class="border-b border-black/20 pb-4">
+                            <button class="faq-toggle w-full flex justify-between items-center text-left">
+                                <span class="font-bold text-black">What are your hours of operation?</span>
+                                <i data-feather="chevron-down" class="w-5 h-5 transform transition-transform text-black"></i>
+                            </button>
+                            <div class="faq-content hidden mt-2">
+                                <p class="text-black">
+                                Our staffed hours are <strong>Monday to Friday, 8:30 AM – 5:00 PM</strong>.  
+                                <strong>Dedicated Desk</strong> and <strong>Private Office</strong> members enjoy <strong>24/7 access</strong> to the space.  
+                                <strong>Casual members</strong> can use the space during standard open hours only.
+                                </p>
                             </div>
-                            <div class="border-b border-white border-opacity-20 pb-4">
-                                <button class="faq-toggle w-full flex justify-between items-center text-left">
-                                    <span class="font-bold text-white">Is parking available?</span>
-                                    <i data-feather="chevron-down" class="w-5 h-5 transform transition-transform text-white"></i>
-                                </button>
-                                <div class="faq-content hidden mt-2">
-                                    <p class="text-white">Yes! We have dedicated parking spots for members and validated parking for guests visiting during staffed hours.</p>
-                                </div>
                             </div>
-                            <div class="border-b border-white border-opacity-20 pb-4">
-                                <button class="faq-toggle w-full flex justify-between items-center text-left">
-                                    <span class="font-bold text-white">Can I try before I commit?</span>
-                                    <i data-feather="chevron-down" class="w-5 h-5 transform transition-transform text-white"></i>
-                                </button>
-                                <div class="faq-content hidden mt-2">
-                                    <p class="text-white">Absolutely! We offer free day passes for first-time visitors. Book a tour and we'll include a day pass to experience Powerhouse for yourself.</p>
-                                </div>
+
+                            <div class="border-b border-black/20 pb-4">
+                            <button class="faq-toggle w-full flex justify-between items-center text-left">
+                                <span class="font-bold text-black">Is parking available?</span>
+                                <i data-feather="chevron-down" class="w-5 h-5 transform transition-transform text-black"></i>
+                            </button>
+                            <div class="faq-content hidden mt-2">
+                                <p class="text-black">
+                                Yes. Members can choose to add a <strong>reserved parking bay</strong> on site for a monthly fee.  
+                                There are also <strong>casual pay-by-app parks</strong> available on site through ParkMate for short stays.  
+                                In addition, there’s <strong>plenty of nearby street parking</strong> — both paid and free within a short walking distance.
+                                </p>
+                            </div>
+                            </div>
+
+
+                            <div class="border-b border-black/20 pb-4">
+                            <button class="faq-toggle w-full flex justify-between items-center text-left">
+                                <span class="font-bold text-black">Can I try before I commit?</span>
+                                <i data-feather="chevron-down" class="w-5 h-5 transform transition-transform text-black"></i>
+                            </button>
+                            <div class="faq-content hidden mt-2">
+                                <p class="text-black">Absolutely! Book in a tour and let us know what you are wanting to try!</p>
+                            </div>
                             </div>
                         </div>
-                    </div>
+                        </div>
+
                 </div>
                 
                 <div class="lg:w-1/2">
